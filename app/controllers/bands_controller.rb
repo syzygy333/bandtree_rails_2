@@ -25,25 +25,25 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
   end
 
-  # def edit
-  #   @band = Band.find(params[:id])
-  # end
-  #
-  # def update
-  #   @band = Band.find(params[:id])
-  #   if current_user
-  #     @band.update(band_params)
-  #     flash[:success] = "Band updated."
-  #     redirect_to band_path(@band)
-  #   elsif current_user == nil
-  #     flash[:alert] = "You must be signed in to do that."
-  #     redirect_to band_path(@band)
-  #   else
-  #     flash[:alert] = @band.errors.full_messages.join(".  ")
-  #     render :edit
-  #   end
-  # end
-  #
+  def edit
+    @band = Band.find(params[:id])
+  end
+
+  def update
+    @band = Band.find(params[:id])
+    if current_user
+      @band.update(band_params)
+      flash[:success] = "Band updated."
+      redirect_to band_path(@band)
+    elsif current_user == nil
+      flash[:alert] = "You must be signed in to do that."
+      redirect_to band_path(@band)
+    else
+      flash[:alert] = @band.errors.full_messages.join(".  ")
+      render :edit
+    end
+  end
+
   # def destroy
   #   @band = Band.find(params[:id])
   #   if current_user
