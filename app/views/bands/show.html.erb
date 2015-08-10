@@ -6,9 +6,9 @@
       <p><strong>Official Website:</strong> <%= link_to "#{@band.official_link.sub(/^https?\:\/\//, '').sub(/^www./,'')}", @band.official_link %></p>
       <p><strong>Wiki:</strong> <%= link_to "#{@band.wiki_link.sub(/^https?\:\/\//, '').sub(/^www./,'')}" %></p>
     </div>
-    <!-- <%= link_to "Delete Band", band_path(@band), method: :delete,
-      class: "tiny button alert right" %> -->
-    <%= link_to "Edit", edit_band_path,
+    <%= link_to "Delete Band", band_path(@band), method: :delete,
+      class: "tiny button alert right" %>
+    <%= link_to "Edit Band", edit_band_path,
       class: "tiny button secondary left" %>
   </div>
 </div>

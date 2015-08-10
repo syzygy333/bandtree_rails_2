@@ -21,7 +21,7 @@ feature 'user views all bands', %Q{
     band = FactoryGirl.create(:band)
     visit band_path(band.id)
 
-    click_link "Edit"
+    click_link "Edit Band"
 
     expect(page).to have_content("Edit Band")
     expect(page).to have_content("Private")

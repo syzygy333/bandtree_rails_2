@@ -44,18 +44,18 @@ class BandsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @band = Band.find(params[:id])
-  #   if current_user
-  #     @band.destroy
-  #     flash[:success] = "Band deleted."
-  #     redirect_to root_path
-  #   else
-  #     flash[:alert] = "You must be signed in to do that."
-  #     redirect_to band_path(@band)
-  #   end
-  # end
-  #
+  def destroy
+    @band = Band.find(params[:id])
+    if current_user
+      @band.destroy
+      flash[:success] = "Band deleted."
+      redirect_to bands_path
+    else
+      flash[:alert] = "You must be signed in to do that."
+      redirect_to band_path(@band)
+    end
+  end
+
   private
 
   def band_params
