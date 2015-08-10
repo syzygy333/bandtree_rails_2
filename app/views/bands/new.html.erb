@@ -1,0 +1,31 @@
+<h1>Add a band</h1>
+  <%= form_for @band do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :biography %>
+      <%= f.text_area :biography %>
+    </div>
+
+    <div class="field">
+      <%= f.label :official_link %>
+      <%= f.url_field :official_link %>
+    </div>
+
+    <div class="field">
+      <%= f.label :wiki_link %>
+      <%= f.url_field :wiki_link %>
+    </div>
+
+    <div class="field">
+      <%= f.label :private %>
+      <%= f.check_box :private? %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add", class: "tiny button radius" %>
+    </div>
+  <% end %>
