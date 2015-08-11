@@ -23,7 +23,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
-    @albums = @band.albums
+    @releases = @band.releases
   end
 
   def edit
