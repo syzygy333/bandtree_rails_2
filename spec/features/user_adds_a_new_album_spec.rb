@@ -17,12 +17,12 @@ feature 'user adds an album', %Q{
     click_button 'Log in'
 
     band = FactoryGirl.create(:band)
-    album = FactoryGirl.create(:album)
+    release = FactoryGirl.create(:release)
   end
 
   scenario 'valid information in form to add an album' do
     visit band_path(band)
-    click_link "Add Album"
+    click_link "Add Release"
 
     fill_in "Title", with: album.title
     fill_in "Track list", with: album.track_list

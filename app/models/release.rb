@@ -1,4 +1,4 @@
-class Album < ActiveRecord::Base
+class Release < ActiveRecord::Base
   belongs_to :band
 
   validates :title, presence: true

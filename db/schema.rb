@@ -16,7 +16,15 @@ ActiveRecord::Schema.define(version: 20150810222054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "albums", force: :cascade do |t|
+  create_table "bands", force: :cascade do |t|
+    t.string  "name",                          null: false
+    t.text    "biography"
+    t.string  "official_link"
+    t.string  "wiki_link"
+    t.boolean "private?",      default: false
+  end
+
+  create_table "releases", force: :cascade do |t|
     t.string  "title",                            null: false
     t.text    "track_list",                       null: false
     t.integer "year_released"
@@ -24,17 +32,9 @@ ActiveRecord::Schema.define(version: 20150810222054) do
     t.string  "record_label_url"
     t.string  "catalog_number"
     t.string  "wiki_link"
-    t.string  "type"
-    t.string  "length"
+    t.string  "release_type"
+    t.string  "release_length"
     t.boolean "private?",         default: false
-  end
-
-  create_table "bands", force: :cascade do |t|
-    t.string  "name",                          null: false
-    t.text    "biography"
-    t.string  "official_link"
-    t.string  "wiki_link"
-    t.boolean "private?",      default: false
   end
 
   create_table "users", force: :cascade do |t|
