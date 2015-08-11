@@ -25,7 +25,7 @@ feature 'user adds a band', %Q{
     fill_in "Official link", with: band.official_link
     fill_in "Wiki link", with: band.wiki_link
 
-    click_button "Add"
+    click_button "Add Band"
 
     expect(page).to have_content("Band added")
   end
@@ -37,7 +37,7 @@ feature 'user adds a band', %Q{
     fill_in "Official link", with: band.official_link
     fill_in "Wiki link", with: band.wiki_link
 
-    click_button "Add"
+    click_button "Add Band"
 
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content(band.biography)
