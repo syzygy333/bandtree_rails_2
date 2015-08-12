@@ -15,6 +15,7 @@ FactoryGirl.define do
   end
 
   factory :release do
+    band
     title Faker::Lorem.sentence(2)
     track_list Faker::Lorem.sentence(2)
     year_released "2015"

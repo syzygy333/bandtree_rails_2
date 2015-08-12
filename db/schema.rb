@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810222054) do
+ActiveRecord::Schema.define(version: 20150812023117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150810222054) do
     t.string  "release_type"
     t.string  "release_length"
     t.boolean "private?",         default: false
+    t.integer "band_id",                          null: false
   end
 
   create_table "users", force: :cascade do |t|

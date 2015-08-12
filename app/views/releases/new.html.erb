@@ -11,7 +11,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :year_released %>
+      <%= f.label :year %>
       <%= select_year(
         nil, prompt: 'Choose year', start_year: Time.now.year,
         end_year: 1900
@@ -30,7 +30,7 @@
 
     <div class="field">
       <%= f.label :catalog_number %>
-      <%= f.number_field :catalog_number %>
+      <%= f.text_field :catalog_number %>
     </div>
 
     <div class="field">
@@ -39,13 +39,13 @@
     </div>
 
     <div class="field">
-      <%= f.label :type %>
-      <%= f.select :type %>
+      <%= f.label :release_type %>
+      <%= f.text_field :release_type %>
     </div>
 
     <div class="field">
-      <%= f.label :length %>
-      <%= f.select :length %>
+      <%= f.label :release_length %>
+      <%= f.text_field :release_length %>
     </div>
 
     <div class="field">

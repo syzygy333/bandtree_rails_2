@@ -17,38 +17,43 @@ feature 'user adds a release', %Q{
     click_button 'Log in'
   end
 
-  scenario 'valid information in form to add an album' do
+  scenario 'valid information in form to add a release' do
     band = FactoryGirl.create(:band)
-    release = FactoryGirl.create(:release)
 
     visit band_path(band)
     click_link "Add Release"
 
-    fill_in "Title", with: release.title
-    fill_in "Track list", with: release.track_list
-    fill_in "Year released", with: release.year_released
-    fill_in "Record label", with: release.record_label
-    fill_in "Record label url", with: release.record_label_url
-    fill_in "Catalog number", with: release.catalog_number
-    fill_in "Type", with: release.type
-    fill_in "Length", with: release.length
+    fill_in "Title", with: Faker::Lorem.sentence(2)
+    fill_in "Track list", with: Faker::Lorem.sentence(2)
+    fill_in "Record label", with: Faker::Lorem.sentence(1)
+    fill_in "Record label url", with: Faker::Internet.url
+    fill_in "Catalog number", with: 50
+    fill_in "Release type", with: "CD"
+    fill_in "Release length", with: "LP"
 
     click_button "Add Release"
 
     expect(page).to have_content("Release added")
     expect(page).to have_content(band.name)
+    expect(page).to have_content(50)
   end
 
-  scenario 'invalid information in form to add a band' do
+  scenario 'invalid information in form to add a release' do
     band = FactoryGirl.create(:band)
-    release = FactoryGirl.create(:release)
 
     visit band_path(band)
     click_link "Add Release"
 
+    fill_in "Track list", with: Faker::Lorem.sentence(2)
+    fill_in "Record label", with: Faker::Lorem.sentence(1)
+    fill_in "Record label url", with: Faker::Internet.url
+    fill_in "Catalog number", with: 55
+    fill_in "Release type", with: "CD"
+    fill_in "Release length", with: "LP"
+
     click_button "Add Release"
 
-    expect(page).to have_content()
-    expect(page).to have_content()
+    expect(page).to have_content("Add a release")
+    expect(page).to have_content("Private")
   end
 end

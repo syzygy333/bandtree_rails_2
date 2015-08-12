@@ -1,11 +1,13 @@
 class ReleasesController < ApplicationController
   def new
+    @band = Band.find(params[:band_id])
     @release = Release.new
   end
 
   def create
-    @band = Band.find(params[:id])
+    @band = Band.find(params[:band_id])
     @release = Release.new(release_params)
+    @release.band_id = @band.id
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
@@ -22,7 +24,7 @@ class ReleasesController < ApplicationController
 
   def release_params
     params.require(:release).permit(
-      :title, :track_list, :year_released, :record_label,
+      :band_id, :title, :track_list, :year_released, :record_label,
       :record_label_url, :catalog_number, :wiki_link, :type, :length,
       :private?
     )
