@@ -1,4 +1,4 @@
-<h1>Add a release</h1>
+<h1>Edit a release</h1>
   <%= form_for [@band, @release] do |f| %>
     <div class="field">
       <%= f.label :title %>
@@ -51,6 +51,6 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Add Release", class: "tiny button radius" %>
+      <%= f.submit "Edit Release", class: "tiny button radius" %>
     </div>
   <% end %>

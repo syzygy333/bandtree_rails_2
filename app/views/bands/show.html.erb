@@ -29,10 +29,10 @@
         <p><strong>Length:</strong> <%= release.release_length %></p>
       </div>
       <!-- <%= link_to "Delete Band", band_path(@band), method: :delete,
-        class: "tiny button alert right" %>
-      <%= link_to "Edit Band", edit_band_path,
+        class: "tiny button alert right" %> -->
+      <%= link_to "Edit Release", edit_band_release_path(@band.id, release.id),
         class: "tiny button secondary left" %>
-      <%= link_to "Add Release", new_band_release_path(@band),
+      <!-- <%= link_to "Add Release", new_band_release_path(@band),
         class: "tiny button success left" %> -->
   </div>
   <% end %>
