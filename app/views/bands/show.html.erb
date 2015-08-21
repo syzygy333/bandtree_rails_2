@@ -14,6 +14,7 @@
     class: "tiny button success left" %>
   </div>
 </div>
+<h1>Releases</h1>
 <div class="row">
   <% @releases.each do |release| %>
     <div class="small-2 large-6 columns">
@@ -28,12 +29,11 @@
         <p><strong>Type:</strong> <%= release.release_type %></p>
         <p><strong>Length:</strong> <%= release.release_length %></p>
       </div>
-      <!-- <%= link_to "Delete Band", band_path(@band), method: :delete,
-        class: "tiny button alert right" %> -->
-      <%= link_to "Edit Release", edit_band_release_path(@band.id, release.id),
-        class: "tiny button secondary left" %>
-      <!-- <%= link_to "Add Release", new_band_release_path(@band),
-        class: "tiny button success left" %> -->
+      <%= link_to "Delete Release", band_release_path(@band.id,
+        release.id), method: :delete,
+        class: "tiny button alert right" %>
+      <%= link_to "Edit Release", edit_band_release_path(@band.id,
+        release.id), class: "tiny button secondary left" %>
   </div>
   <% end %>
 </div>

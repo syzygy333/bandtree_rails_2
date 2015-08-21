@@ -41,6 +41,20 @@ class ReleasesController < ApplicationController
     end
   end
 
+  def destroy
+    @band = Band.find(params[:band_id])
+    @release = Release.find(params[:id])
+    @release.band_id = @band.id
+    if current_user
+      @release.destroy
+      flash[:success] = "Release deleted."
+      redirect_to band_path(@band)
+    else
+      flash[:alert] = "You must be signed in to do that."
+      redirect_to band_path(@band)
+    end
+  end
+
   private
 
   def release_params
