@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+ruby "2.2.1"
+
 gem 'rails', '4.2.2'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -21,4 +24,5 @@ group :development, :test do
   gem 'devise'
   gem 'foundation-rails'
   gem 'pry-rails'
+  gem 'coveralls', require: false
 end

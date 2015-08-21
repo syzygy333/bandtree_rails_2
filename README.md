@@ -1,3 +1,5 @@
+![Build Status](https://codeship.com/projects/7c2b5fa0-2a65-0133-3873-0a7b4a0ae24e/status?branch=master)![Code Climate](https://codeclimate.com/github/syzygy333/bandtree_rails_2.png) ![Coverage Status](https://coveralls.io/repos/syzygy333/bandtree_rails_2/badge.png)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
