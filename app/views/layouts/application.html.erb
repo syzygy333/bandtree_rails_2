@@ -33,7 +33,11 @@
     </div>
   <%- end -%>
 
-  <%= yield %>
+  <div class="row">
+    <div class="small-4 large-12 columns">
+      <%= yield %>
+    </div>
+  </div>
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>

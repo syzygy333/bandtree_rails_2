@@ -13,4 +13,16 @@ FactoryGirl.define do
     official_link Faker::Internet.url
     wiki_link Faker::Internet.url
   end
+
+  factory :release do
+    band
+    title Faker::Lorem.sentence(2)
+    track_list Faker::Lorem.sentence(2)
+    year_released "2015"
+    record_label Faker::Lorem.sentence(1)
+    record_label_url Faker::Internet.url
+    wiki_link Faker::Internet.url
+    release_type "CD"
+    release_length "LP"
+  end
 end

@@ -20,4 +20,5 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'devise'
   gem 'foundation-rails'
+  gem 'pry-rails'
 end
