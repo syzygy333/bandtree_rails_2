@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812023117) do
+ActiveRecord::Schema.define(version: 20150825204457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150812023117) do
     t.string  "official_link"
     t.string  "wiki_link"
     t.boolean "private?",      default: false
+    t.string  "band_photo"
   end
 
   create_table "releases", force: :cascade do |t|
