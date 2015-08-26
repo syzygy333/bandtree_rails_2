@@ -1,4 +1,6 @@
 class Release < ActiveRecord::Base
+  mount_uploader :release_art, PhotoUploader
+
   belongs_to :band
 
   validates :band, presence: true

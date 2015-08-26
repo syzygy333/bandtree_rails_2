@@ -1,3 +1,6 @@
+<% if @band.band_photo %>
+  <%= image_tag(@band.band_photo) %>
+<% end %>
 <h1><%= @band.name %></h1>
 <div class="panel radius">
   <p><strong>Biography:</strong> <%= @band.biography %></p>
@@ -17,15 +20,17 @@
 <h1>Releases</h1>
 <div class="row">
   <% @releases.each do |release| %>
-    <div class="small-2 large-6 columns">
+    <div class="small-2 large-4 columns">
       <div class="panel radius">
+        <% if release.release_art %>
+          <p><%= image_tag(release.release_art) %></p>
+        <% end %>
         <h2><%= release.title %></h2>
-        <!-- album image -->
         <p><strong>Track List:</strong> <%= release.track_list %></p>
         <p><strong>Year:</strong> <%= release.year_released %></p>
         <p><strong>Record Label:</strong> <%= link_to release.record_label, release.record_label_url %></p>
         <p><strong>Catalog Number:</strong> <%= release.catalog_number %></p>
-        <p><strong>Wiki:</strong> <%= link_to release.wiki_link, release.wiki_link %></p>
+        <p><strong>Wiki:</strong> <%= link_to release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], release.wiki_link %></p>
         <p><strong>Type:</strong> <%= release.release_type %></p>
         <p><strong>Length:</strong> <%= release.release_length %></p>
       </div>

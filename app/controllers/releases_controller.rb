@@ -60,8 +60,7 @@ class ReleasesController < ApplicationController
   def release_params
     params.require(:release).permit(
       :band_id, :title, :track_list, :year_released, :record_label,
-      :record_label_url, :catalog_number, :wiki_link, :release_type, :release_length,
-      :private?
+      :record_label_url, :catalog_number, :wiki_link, :release_type, :release_length, :release_art, :private?
     )
   end
 end
