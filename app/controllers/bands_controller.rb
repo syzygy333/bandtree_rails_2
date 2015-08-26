@@ -23,7 +23,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
-    @releases = @band.releases
+    @releases = @band.releases.order(year_released: :desc)
   end
 
   def edit
