@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class BandPhotoUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
