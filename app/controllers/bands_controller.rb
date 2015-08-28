@@ -23,7 +23,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
-    @releases = @band.releases
+    @releases = @band.releases.order(year_released: :desc)
   end
 
   def edit
@@ -61,7 +61,7 @@ class BandsController < ApplicationController
 
   def band_params
     params.require(:band).permit(
-      :name, :biography, :official_link, :wiki_link, :private?
+      :name, :biography, :official_link, :wiki_link, :band_photo, :private?
     )
   end
 end

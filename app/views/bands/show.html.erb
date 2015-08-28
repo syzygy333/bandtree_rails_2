@@ -1,3 +1,6 @@
+<% if @band.band_photo %>
+  <%= image_tag(@band.band_photo) %>
+<% end %>
 <h1><%= @band.name %></h1>
 <div class="panel radius">
   <p><strong>Biography:</strong> <%= @band.biography %></p>
@@ -9,31 +12,24 @@
   <%= link_to "Delete Band", band_path(@band), method: :delete,
     class: "tiny button alert right" %>
   <%= link_to "Edit Band", edit_band_path,
-    class: "tiny button secondary left" %>
+    class: "tiny button left" %>
   <%= link_to "Add Release", new_band_release_path(@band),
     class: "tiny button success left" %>
   </div>
 </div>
 <h1>Releases</h1>
 <div class="row">
-  <% @releases.each do |release| %>
-    <div class="small-2 large-6 columns">
-      <div class="panel radius">
+<% @releases.each do |release| %>
+  <%= link_to release_path(release) do %>
+    <div class="small-2 large-4 columns">
+      <% if release.release_art %>
+        <p class="release-image"><%= image_tag(release.release_art) %></p>
+      <% end %>
+      <div class="panel">
         <h2><%= release.title %></h2>
-        <!-- album image -->
         <p><strong>Track List:</strong> <%= release.track_list %></p>
-        <p><strong>Year:</strong> <%= release.year_released %></p>
-        <p><strong>Record Label:</strong> <%= link_to release.record_label, release.record_label_url %></p>
-        <p><strong>Catalog Number:</strong> <%= release.catalog_number %></p>
-        <p><strong>Wiki:</strong> <%= link_to release.wiki_link, release.wiki_link %></p>
-        <p><strong>Type:</strong> <%= release.release_type %></p>
-        <p><strong>Length:</strong> <%= release.release_length %></p>
       </div>
-      <%= link_to "Delete Release", band_release_path(@band.id,
-        release.id), method: :delete,
-        class: "tiny button alert right" %>
-      <%= link_to "Edit Release", edit_band_release_path(@band.id,
-        release.id), class: "tiny button secondary left" %>
-  </div>
+    </div>
   <% end %>
+<% end %>
 </div>

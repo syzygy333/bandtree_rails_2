@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="small-2 large-12 columns">
+      <% if @release.release_art %>
+        <p class="release-image"><%= image_tag(@release.release_art) %></p>
+      <% end %>
+      <div class="panel radius">
+        <h2><%= @band.name %>: <%= @release.title %></h2>
+        <p><strong>Track List:</strong> <%= @release.track_list %></p>
+        <p><strong>Year:</strong> <%= @release.year_released %></p>
+        <p><strong>Record Label:</strong> <%= link_to @release.record_label, @release.record_label_url %></p>
+        <p><strong>Catalog Number:</strong> <%= @release.catalog_number %></p>
+        <p><strong>Wiki:</strong> <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></p>
+        <p><strong>Type:</strong> <%= @release.release_type %></p>
+        <p><strong>Length:</strong> <%= @release.release_length %></p>
+      </div>
+        <%= link_to "Delete Release", release_path(@release), method: :delete,
+          class: "tiny button alert right delete-release" %>
+        <%= link_to "Edit Release", edit_release_path(@release), class: "tiny button left edit-release" %><br />
+  </div>
+</div>

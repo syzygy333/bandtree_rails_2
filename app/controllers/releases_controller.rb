@@ -25,6 +25,12 @@ class ReleasesController < ApplicationController
     @release = Release.find(params[:id])
   end
 
+  def show
+    @release = Release.find(params[:id])
+    @band = @release.band
+    @release.band_id = @band.id
+  end
+
   def update
     @band = Band.find(params[:band_id])
     @release = Release.find(params[:id])
@@ -60,8 +66,7 @@ class ReleasesController < ApplicationController
   def release_params
     params.require(:release).permit(
       :band_id, :title, :track_list, :year_released, :record_label,
-      :record_label_url, :catalog_number, :wiki_link, :release_type, :release_length,
-      :private?
+      :record_label_url, :catalog_number, :wiki_link, :release_type, :release_length, :release_art, :private?
     )
   end
 end

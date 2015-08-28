@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :bands do
-    resources :releases
+    resources :releases, only: [:index, :new, :create]
   end
+
+  resources :releases, only: [:show, :edit, :update, :destroy]
 end
