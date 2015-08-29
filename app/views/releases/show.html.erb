@@ -1,20 +1,24 @@
 <div class="row">
-    <div class="small-2 large-12 columns">
+<h1><%= link_to @band.name, band_path(@band) %></h1>
+    <div class="small-2 large-6 columns right">
       <% if @release.release_art %>
-        <p class="release-image"><%= image_tag(@release.release_art) %></p>
+        <p><%= image_tag(@release.release_art) %></p>
       <% end %>
-      <div class="panel radius">
-        <h2><%= @band.name %>: <%= @release.title %></h2>
-        <p><strong>Track List:</strong> <%= @release.track_list %></p>
-        <p><strong>Year:</strong> <%= @release.year_released %></p>
-        <p><strong>Record Label:</strong> <%= link_to @release.record_label, @release.record_label_url %></p>
-        <p><strong>Catalog Number:</strong> <%= @release.catalog_number %></p>
-        <p><strong>Wiki:</strong> <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></p>
-        <p><strong>Type:</strong> <%= @release.release_type %></p>
-        <p><strong>Length:</strong> <%= @release.release_length %></p>
-      </div>
-        <%= link_to "Delete Release", release_path(@release), method: :delete,
-          class: "tiny button alert right delete-release" %>
-        <%= link_to "Edit Release", edit_release_path(@release), class: "tiny button left edit-release" %><br />
-  </div>
+    </div>
+    <div class="small-2 large-6 columns panel radius left">
+      <h2><%= @release.title %></h2>
+      <p><strong>Track List:</strong> <%= @release.track_list %></p>
+      <p><strong>Year:</strong> <%= @release.year_released %></p>
+      <p><strong>Record Label:</strong> <%= link_to @release.record_label, @release.record_label_url %></p>
+      <p><strong>Catalog Number:</strong> <%= @release.catalog_number %></p>
+      <p><strong>Wiki:</strong> <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></p>
+      <p><strong>Type:</strong> <%= @release.release_type %></p>
+      <p><strong>Length:</strong> <%= @release.release_length %></p>
+    </div>
+    <div class="small-2 large-6 columns left">
+      <%= link_to "Delete Release", release_path(@release), method:
+        :delete, class: "tiny button alert right right-button" %>
+      <%= link_to "Edit Release", edit_release_path(@release), class:
+        "tiny button left left-button" %>
+    </div>
 </div>

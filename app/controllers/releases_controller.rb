@@ -13,7 +13,7 @@ class ReleasesController < ApplicationController
       render :new
     elsif @release.save
       flash[:success] = "Release added."
-      redirect_to band_path(@band)
+      redirect_to release_path(@release)
     else
       flash[:alert] = @release.errors.full_messages.join(".  ")
       render :new
@@ -21,8 +21,8 @@ class ReleasesController < ApplicationController
   end
 
   def edit
-    @band = Band.find(params[:band_id])
     @release = Release.find(params[:id])
+    @band = @release.band
   end
 
   def show
@@ -32,15 +32,15 @@ class ReleasesController < ApplicationController
   end
 
   def update
-    @band = Band.find(params[:band_id])
     @release = Release.find(params[:id])
+    @band = @release.band
     @release.band_id = @band.id
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
-      redirect_to band_path(@band)
+      redirect_to release_path(@release)
     elsif @release.update(release_params)
       flash[:success] = "Release updated."
-      redirect_to band_path(@band)
+      redirect_to release_path(@release)
     else
       flash[:alert] = @release.errors.full_messages.join(".  ")
       render :edit
@@ -48,8 +48,8 @@ class ReleasesController < ApplicationController
   end
 
   def destroy
-    @band = Band.find(params[:band_id])
     @release = Release.find(params[:id])
+    @band = @release.band
     @release.band_id = @band.id
     if current_user
       @release.destroy
@@ -66,7 +66,8 @@ class ReleasesController < ApplicationController
   def release_params
     params.require(:release).permit(
       :band_id, :title, :track_list, :year_released, :record_label,
-      :record_label_url, :catalog_number, :wiki_link, :release_type, :release_length, :release_art, :private?
+      :record_label_url, :catalog_number, :wiki_link, :release_type,
+      :release_length, :release_art, :private?
     )
   end
 end

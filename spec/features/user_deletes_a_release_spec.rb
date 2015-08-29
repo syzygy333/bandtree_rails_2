@@ -21,7 +21,7 @@ feature 'user deletes a release', %Q{
     band = FactoryGirl.create(:band)
     release = FactoryGirl.create(:release, band: band)
 
-    visit band_path(band)
+    visit release_path(release)
     click_link "Delete Release"
 
     expect(page).to have_content("Release deleted")
