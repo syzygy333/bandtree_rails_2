@@ -1,0 +1,34 @@
+$foundation-black: #222222;
+$bandtree-green: #43ac6a;
+
+h1,
+h2,
+h3 {
+  font-weight: lighter;
+}
+
+h1 a {
+  color: $foundation-black;
+}
+
+h1 a:hover {
+  color: $bandtree-green;
+}
+
+.release-image {
+  margin-bottom: 0;
+}
+
+.right-button {
+  margin-right: 20px;
+  margin-top: -20px;
+}
+
+.left-button {
+  margin-left: 20px;
+  margin-top: -20px;
+}
+
+.middle-button {
+  margin-top: -20px;
+}

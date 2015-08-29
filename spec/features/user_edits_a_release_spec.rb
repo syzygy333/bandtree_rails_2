@@ -21,7 +21,7 @@ feature 'user edits a release', %Q{
     band = FactoryGirl.create(:band)
     release = FactoryGirl.create(:release, band: band)
 
-    visit band_path(band)
+    visit release_path(release)
     click_link "Edit Release"
 
     fill_in "Title", with: Faker::Lorem.sentence(2)
