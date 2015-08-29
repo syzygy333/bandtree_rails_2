@@ -1,3 +1,6 @@
+$foundation-black: #222222;
+$bandtree-green: #43AC6A;
+
 h1,
 h2,
 h3 {
@@ -5,11 +8,11 @@ h3 {
 }
 
 h1 a {
-  color: #222222;
+  color: $foundation-black;
 }
 
 h1 a:hover {
-  color: #43AC6A;
+  color: $bandtree-green;
 }
 
 .release-image {
