@@ -1,4 +1,6 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
-</p>
+<div class="splash">
+  <p class="splash-title">Bandtree</p>
+  <p class="splash-text">The tree is always growing.</p>
+  <p class="splash-text">The tree has <%= Band.all.count %> <%= link_to "bands", bands_path %>, <%= Release.all.count %> <%= link_to "releases" %>, and # <%= link_to "artists" %>.</p>
+  <p class="splash-text">Explore and help grow the tree by clicking one of the categories above.</p>
+</div>

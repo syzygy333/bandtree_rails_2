@@ -1,61 +1,65 @@
-<h1>Add a release</h1>
-  <%= form_for [@band, @release] do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h1>Add a release</h1>
+      <%= form_for [@band, @release] do |f| %>
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
 
-    <div class="field">
-      <%= f.label :track_list %>
-      <%= f.text_area :track_list %>
-    </div>
+        <div class="field">
+          <%= f.label :track_list %>
+          <%= f.text_area :track_list %>
+        </div>
 
-    <div class="field">
-      <%= f.label :year_released %>
-      <%= f.select :year_released, (1900)..(Time.zone.now.year) %>
-    </div>
+        <div class="field">
+          <%= f.label :year_released %>
+          <%= f.select :year_released, (1900)..(Time.zone.now.year) %>
+        </div>
 
-    <div class="field">
-      <%= f.label :record_label %>
-      <%= f.text_field :record_label %>
-    </div>
+        <div class="field">
+          <%= f.label :record_label %>
+          <%= f.text_field :record_label %>
+        </div>
 
-    <div class="field">
-      <%= f.label :record_label_url %>
-      <%= f.url_field :record_label_url %>
-    </div>
+        <div class="field">
+          <%= f.label :record_label_url %>
+          <%= f.url_field :record_label_url %>
+        </div>
 
-    <div class="field">
-      <%= f.label :catalog_number %>
-      <%= f.text_field :catalog_number %>
-    </div>
+        <div class="field">
+          <%= f.label :catalog_number %>
+          <%= f.text_field :catalog_number %>
+        </div>
 
-    <div class="field">
-      <%= f.label :wiki_link %>
-      <%= f.url_field :wiki_link %>
-    </div>
+        <div class="field">
+          <%= f.label :wiki_link %>
+          <%= f.url_field :wiki_link %>
+        </div>
 
-    <div class="field">
-      <%= f.label :release_type %>
-      <%= f.text_field :release_type %>
-    </div>
+        <div class="field">
+          <%= f.label :release_type %>
+          <%= f.text_field :release_type %>
+        </div>
 
-    <div class="field">
-      <%= f.label :release_length %>
-      <%= f.text_field :release_length %>
-    </div>
+        <div class="field">
+          <%= f.label :release_length %>
+          <%= f.text_field :release_length %>
+        </div>
 
-    <div class="field">
-      <%= f.label :release_art %>
-      <%= f.file_field :release_art %>
-    </div>
+        <div class="field">
+          <%= f.label :release_art %>
+          <%= f.file_field :release_art %>
+        </div>
 
-    <div class="field">
-      <%= f.label :private %>
-      <%= f.check_box :private? %>
-    </div>
+        <div class="field">
+          <%= f.label :private %>
+          <%= f.check_box :private? %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "Add Release", class: "tiny button radius" %>
-    </div>
-  <% end %>
+        <div class="actions">
+          <%= f.submit "Add Release", class: "tiny button radius" %>
+        </div>
+      <% end %>
+  </div>
+</div>

@@ -1,6 +1,14 @@
-<h1>Bands</h1>
-  <% @bands.each do |band| %>
-    <div class="panel">
-      <p><%= link_to band.name, band_path(band) %></p>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="small-12 large-4 columns">
+    <h1>Bands</h1>
+      <% @bands.each do |band| %>
+        <div class="panel">
+          <p><%= link_to band.name, band_path(band) %></p>
+        </div>
+      <% end %>
+  </div>
+  <div class="small-12 large-12 columns">
+    <%= link_to "Add a Band", new_band_path,
+      class: "tiny button success" %>
+  </div>
+</div>

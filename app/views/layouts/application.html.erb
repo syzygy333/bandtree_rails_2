@@ -10,7 +10,7 @@
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">BandtreeRails2</a></h1>
+        <h1><a href="/">Bandtree</a></h1>
       </li>
     </ul>
 
@@ -33,11 +33,7 @@
     </div>
   <%- end -%>
 
-  <div class="row">
-    <div class="small-4 large-12 columns">
-      <%= yield %>
-    </div>
-  </div>
+  <%= yield %>
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
