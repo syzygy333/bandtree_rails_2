@@ -1,6 +1,24 @@
 $foundation-black: #222222;
 $bandtree-green: #43ac6a;
 
+// .splash {
+//   background-image: image-url("treesplash5.jpeg");
+//   background-size: cover;
+//   color: #ffffff;
+//   position: relative;
+// }
+
+.splash-text {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.splash-title {
+  text-align: center;
+  font-size: 7rem;
+}
+
+
 h1,
 h2,
 h3 {
