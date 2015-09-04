@@ -9,12 +9,13 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
-    if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
-      render :new
-    elsif @band.save
+    if current_user
+      @band.save
       flash[:success] = "Band added."
       redirect_to band_path(@band)
+    elsif current_user == nil
+      flash[:alert] = "You must be signed in to do that."
+      render :new
     else
       flash[:alert] = @band.errors.full_messages.join(".  ")
       render :new

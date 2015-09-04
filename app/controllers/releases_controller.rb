@@ -11,13 +11,14 @@ class ReleasesController < ApplicationController
   def create
     @band = Band.find(params[:band_id])
     @release = Release.new(release_params)
-    if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
-      render :new
-    elsif @release.save
+    if current_user
+      @release.save
       @band.releases << @release
       flash[:success] = "Release added."
       redirect_to release_path(@release)
+    elsif current_user == nil
+      flash[:alert] = "You must be signed in to do that."
+      render :new
     else
       flash[:alert] = @release.errors.full_messages.join(".  ")
       render :new
