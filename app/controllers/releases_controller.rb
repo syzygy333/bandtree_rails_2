@@ -37,11 +37,12 @@ class ReleasesController < ApplicationController
   def update
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
-      redirect_to release_path(@release)
-    elsif @release.update(release_params)
+    if current_user
+      @release.update(release_params)
       flash[:success] = "Release updated."
+      redirect_to release_path(@release)
+    elsif current_user == nil
+      flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
     else
       flash[:alert] = @release.errors.full_messages.join(".  ")

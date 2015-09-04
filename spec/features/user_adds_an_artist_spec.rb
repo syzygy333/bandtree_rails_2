@@ -1,23 +1,22 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'user adds an artist', %Q{
+feature "user adds an artist", %{
   As a signed up user
   I want to add an artist
   So that I can grow the bandtree
 } do
-
   before :each do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
   end
 
-  scenario 'valid information in form to add an artist' do
+  scenario "valid information in form to add an artist" do
     visit new_artist_path
     artist = FactoryGirl.create(:artist)
     fill_in "First name", with: artist.first_name
@@ -33,7 +32,7 @@ feature 'user adds an artist', %Q{
     expect(page).to have_content(artist.biography)
   end
 
-  scenario 'invalid information in form to add a band' do
+  scenario "invalid information in form to add a band" do
     visit new_artist_path
     artist = FactoryGirl.create(:artist)
     fill_in "Biography", with: artist.biography
