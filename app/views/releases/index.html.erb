@@ -1,7 +1,10 @@
 <div class="row">
-  <div class="small-12 large-12 columns">
-    <% @releases.each do |release| %>
-      <%= release.title %>
-    <% end %>
+  <div class="small-12 large-4 columns">
+    <h1>Bands</h1>
+      <% @releases.each do |release| %>
+        <div class="panel">
+          <p><%= link_to release.title, release_path(release) %></p>
+        </div>
+      <% end %>
   </div>
 </div>

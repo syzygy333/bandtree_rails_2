@@ -1,4 +1,8 @@
 class ReleasesController < ApplicationController
+  def index
+    @releases = Release.all.limit(30).order(:title)
+  end
+
   def new
     @band = Band.find(params[:band_id])
     @release = Release.new
@@ -20,12 +24,12 @@ class ReleasesController < ApplicationController
     end
   end
 
-  def edit
+  def show
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
   end
 
-  def show
+  def edit
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
   end
