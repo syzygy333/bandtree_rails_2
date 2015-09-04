@@ -7,11 +7,11 @@ class ReleasesController < ApplicationController
   def create
     @band = Band.find(params[:band_id])
     @release = Release.new(release_params)
-    @release.band_id = @band.id
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
     elsif @release.save
+      @band.releases << @release
       flash[:success] = "Release added."
       redirect_to release_path(@release)
     else
@@ -22,19 +22,17 @@ class ReleasesController < ApplicationController
 
   def edit
     @release = Release.find(params[:id])
-    @band = @release.band
+    @band = Band.find(@release.bands.last.id)
   end
 
   def show
     @release = Release.find(params[:id])
-    @band = @release.band
-    @release.band_id = @band.id
+    @band = Band.find(@release.bands.last.id)
   end
 
   def update
     @release = Release.find(params[:id])
-    @band = @release.band
-    @release.band_id = @band.id
+    @band = Band.find(@release.bands.last.id)
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
@@ -49,8 +47,7 @@ class ReleasesController < ApplicationController
 
   def destroy
     @release = Release.find(params[:id])
-    @band = @release.band
-    @release.band_id = @band.id
+    @band = Band.find(@release.bands.last.id)
     if current_user
       @release.destroy
       flash[:success] = "Release deleted."

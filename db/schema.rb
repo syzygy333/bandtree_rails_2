@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826001405) do
+ActiveRecord::Schema.define(version: 20150904005211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string  "first_name",            null: false
+    t.string  "middle_name"
+    t.string  "last_name",             null: false
+    t.string  "stage_name"
+    t.boolean "stage_name_preferred?"
+    t.date    "birth_date"
+    t.date    "death_date"
+    t.text    "biography"
+    t.string  "official_link"
+    t.string  "wiki_link"
+    t.string  "portrait"
+  end
+
+  create_table "artists_bands", id: false, force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "band_id"
+  end
+
+  add_index "artists_bands", ["artist_id"], name: "index_artists_bands_on_artist_id", using: :btree
+  add_index "artists_bands", ["band_id"], name: "index_artists_bands_on_band_id", using: :btree
+
+  create_table "artists_releases", id: false, force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "release_id"
+  end
+
+  add_index "artists_releases", ["artist_id"], name: "index_artists_releases_on_artist_id", using: :btree
+  add_index "artists_releases", ["release_id"], name: "index_artists_releases_on_release_id", using: :btree
 
   create_table "bands", force: :cascade do |t|
     t.string  "name",                          null: false
@@ -24,6 +54,14 @@ ActiveRecord::Schema.define(version: 20150826001405) do
     t.boolean "private?",      default: false
     t.string  "band_photo"
   end
+
+  create_table "bands_releases", id: false, force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "release_id"
+  end
+
+  add_index "bands_releases", ["band_id"], name: "index_bands_releases_on_band_id", using: :btree
+  add_index "bands_releases", ["release_id"], name: "index_bands_releases_on_release_id", using: :btree
 
   create_table "releases", force: :cascade do |t|
     t.string  "title",                            null: false
@@ -36,7 +74,6 @@ ActiveRecord::Schema.define(version: 20150826001405) do
     t.string  "release_type"
     t.string  "release_length"
     t.boolean "private?",         default: false
-    t.integer "band_id",                          null: false
     t.string  "release_art"
   end
 

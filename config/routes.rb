@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :releases, only: [:index, :new, :create]
   end
 
-  resources :releases, only: [:show, :edit, :update, :destroy]
+  resources :releases, only: [:show, :edit, :update, :destroy] do
+    resources :artists
+  end
 end
