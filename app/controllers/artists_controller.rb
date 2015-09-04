@@ -9,13 +9,12 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
-    if current_user
-      @artist.save
-      flash[:success] = "Artist added."
-      redirect_to artist_path(@artist)
-    elsif current_user == nil
+    if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
+    elsif @artist.save
+      flash[:success] = "Artist added."
+      redirect_to artist_path(@artist)
     else
       flash[:alert] = @artist.errors.full_messages.join(".  ")
       render :new
