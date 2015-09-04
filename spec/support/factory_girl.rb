@@ -25,4 +25,13 @@ FactoryGirl.define do
     release_length "LP"
     bands { |a| [a.association(:band)] }
   end
+
+  factory :artist do
+    first_name Faker::Name.first_name
+    middle_name Faker::Name.first_name
+    last_name Faker::Name.last_name
+    biography Faker::Lorem.paragraph
+    official_link Faker::Internet.domain_name
+    wiki_link Faker::Internet.domain_name
+  end
 end

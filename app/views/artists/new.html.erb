@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h1>Add an artist</h1>
+      <%= form_for @artist do |f| %>
+        <div class="field">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :middle_name %>
+          <%= f.text_field :middle_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :stage_name %>
+          <%= f.text_field :stage_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :stage_name_preferred? %>
+          <%= f.check_box :stage_name_preferred?, {}, true, false %>
+        </div>
+
+        <div class="field">
+          <%= f.label :biography %>
+          <%= f.text_area :biography %>
+        </div>
+
+        <div class="field">
+          <%= f.label :official_link %>
+          <%= f.url_field :official_link %>
+        </div>
+
+        <div class="field">
+          <%= f.label :wiki_link %>
+          <%= f.url_field :wiki_link %>
+        </div>
+
+        <div class="field">
+          <%= f.label :portrait %>
+          <%= f.file_field :portrait %>
+        </div>
+
+        <div class="field">
+          <%= f.label :private %>
+          <%= f.check_box :private? %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Add Artist", class: "tiny button radius" %>
+        </div>
+      <% end %>
+  </div>
+</div>
