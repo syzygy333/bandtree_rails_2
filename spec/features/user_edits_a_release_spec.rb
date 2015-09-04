@@ -18,8 +18,7 @@ feature 'user edits a release', %Q{
   end
 
   scenario 'edits release information' do
-    band = FactoryGirl.create(:band)
-    release = FactoryGirl.create(:release, band: band)
+    release = FactoryGirl.create(:release)
 
     visit release_path(release)
     click_link "Edit Release"
@@ -35,7 +34,6 @@ feature 'user edits a release', %Q{
     click_button "Edit Release"
 
     expect(page).to have_content("Release updated")
-    expect(page).to have_content(band.name)
     expect(page).to have_content(50)
   end
 end

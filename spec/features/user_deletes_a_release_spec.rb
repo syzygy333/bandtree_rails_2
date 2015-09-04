@@ -18,14 +18,12 @@ feature 'user deletes a release', %Q{
   end
 
   scenario 'deletes release information' do
-    band = FactoryGirl.create(:band)
-    release = FactoryGirl.create(:release, band: band)
+    release = FactoryGirl.create(:release)
 
     visit release_path(release)
     click_link "Delete Release"
 
     expect(page).to have_content("Release deleted")
-    expect(page).to have_content(band.name)
     expect(page).to_not have_content(release.title)
   end
 end

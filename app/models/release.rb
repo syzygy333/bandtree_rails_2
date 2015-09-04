@@ -1,9 +1,9 @@
 class Release < ActiveRecord::Base
   mount_uploader :release_art, PhotoUploader
 
-  belongs_to :band
+  has_and_belongs_to_many :bands
+  has_and_belongs_to_many :artists
 
-  validates :band, presence: true
   validates :title, presence: true
   validates :track_list, presence: true
   validates :record_label, presence: true
