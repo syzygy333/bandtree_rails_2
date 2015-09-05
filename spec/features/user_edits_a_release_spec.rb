@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'user edits a release', %Q{
+feature "user edits a release", %Q{
   As a signed up user
   I want to edit a release
   So that I can make the tree better
@@ -11,13 +11,13 @@ feature 'user edits a release', %Q{
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
   end
 
-  scenario 'edits release information' do
+  scenario "edits release information" do
     release = FactoryGirl.create(:release)
 
     visit release_path(release)
@@ -31,7 +31,7 @@ feature 'user edits a release', %Q{
     fill_in "Release type", with: "CD"
     fill_in "Release length", with: "LP"
 
-    click_button "Edit Release"
+    click_button "Accept"
 
     expect(page).to have_content("Release updated")
     expect(page).to have_content(50)
