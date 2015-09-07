@@ -27,6 +27,8 @@ class ReleasesController < ApplicationController
   def show
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
+    @artist_options = Artist.all.limit(20).map{|u|
+      [u.first_name + " " + u.last_name, u.id]}
   end
 
   def edit
