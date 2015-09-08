@@ -5,7 +5,6 @@ feature "user deletes an artist", %{
   I want to delete an artist
   So that I can make the tree better
 } do
-
   before :each do
     user = FactoryGirl.create(:user)
 

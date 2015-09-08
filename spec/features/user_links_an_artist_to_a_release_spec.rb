@@ -1,11 +1,10 @@
 require "rails_helper"
 
-feature "user links an artist to a release", %Q{
+feature "user links an artist to a release", %{
   As a signed up user
   I want to link an artist to a release
   So that I can make the tree better
 } do
-
   before :each do
     user = FactoryGirl.create(:user)
 

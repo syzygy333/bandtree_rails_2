@@ -1,11 +1,10 @@
 require "rails_helper"
 
-feature "user edits a release", %Q{
+feature "user edits a release", %{
   As a signed up user
   I want to edit a release
   So that I can make the tree better
 } do
-
   before :each do
     user = FactoryGirl.create(:user)
 
