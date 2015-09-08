@@ -43,6 +43,7 @@ class ReleasesController < ApplicationController
     elsif @release.update(release_params)
       if params[:release][:artists]
         @release.artists << Artist.find(params[:release][:artists])
+        @band.artists << Artist.find(params[:release][:artists])
       end
       flash[:success] = "Release updated."
       redirect_to release_path(@release)

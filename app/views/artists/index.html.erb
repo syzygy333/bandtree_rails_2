@@ -1,6 +1,6 @@
 <div class="row">
   <div class="small-12 large-4 columns">
-    <h1>Bands</h1>
+    <h1>Artists</h1>
       <% @artists.each do |artist| %>
         <div class="panel">
           <p><%= link_to "#{artist.last_name}, #{artist.first_name}" , artist_path(artist) %></p>
