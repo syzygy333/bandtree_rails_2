@@ -1,10 +1,10 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <%= form_for [@release] do |f| %>
+    <%= form_for @release do |f| %>
       <div class="field">
         <%= f.label :artists, "20 most recent artists" %>
-        <%= f.select :artists, @artist_options,
-          prompt: "Select an artist" %>
+        <%= f.collection_select :artists, Artist.all.limit(20), :id,
+          :full_name, prompt: true %>
         <%= f.submit "Link artist", class: "tiny button radius" %>
       </div>
     <% end %>

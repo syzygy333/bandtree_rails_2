@@ -22,8 +22,10 @@ feature "user links an artist to a release", %Q{
     artist = FactoryGirl.create(:artist)
 
     visit release_path(release)
-    click_link "Link Artist"
+    select(artist.full_name, from: "20 most recent artists")
+    click_button "Link artist"
 
     expect(page).to have_content("Release updated")
+    expect(page).to have_content("Performing Artists:\n#{artist.full_name}")
   end
 end

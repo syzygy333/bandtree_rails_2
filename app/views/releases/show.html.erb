@@ -15,6 +15,9 @@
       <p><strong>Wiki:</strong> <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></p>
       <p><strong>Type:</strong> <%= @release.release_type %></p>
       <p><strong>Length:</strong> <%= @release.release_length %></p>
+      <p><strong>Performing Artists:</strong> <% @release.artists.each do |artist| %>
+        <p><%= artist.full_name %></p>
+      <% end %>
     </div>
     <div class="small-12 large-6 columns left">
       <%= link_to "Delete Release", release_path(@release), method:

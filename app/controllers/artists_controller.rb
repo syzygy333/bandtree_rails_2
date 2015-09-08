@@ -59,6 +59,11 @@ class ArtistsController < ApplicationController
 
   private
 
+  def full_name
+    @artist = Artist.find(params[:id])
+    @artist.first_name + " " + @artist.last_name
+  end
+
   def artist_params
     params.require(:artist).permit(
       :first_name, :middle_name, :last_name, :stage_name,
