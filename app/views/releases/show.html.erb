@@ -8,13 +8,22 @@
     </div>
     <div class="small-12 large-6 columns panel left">
       <h2><%= @release.title %></h2>
-      <p><strong>Track List:</strong> <%= @release.track_list %></p>
-      <p><strong>Year:</strong> <%= @release.year_released %></p>
-      <p><strong>Record Label:</strong> <%= link_to @release.record_label, @release.record_label_url %></p>
-      <p><strong>Catalog Number:</strong> <%= @release.catalog_number %></p>
-      <p><strong>Wiki:</strong> <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></p>
-      <p><strong>Type:</strong> <%= @release.release_type %></p>
-      <p><strong>Length:</strong> <%= @release.release_length %></p>
+      <strong>Track List:</strong>
+        <%= @release.track_list %></br></br>
+      <strong>Year:</strong> <%= @release.year_released %></br>
+      <strong>Record Label:</strong>
+        <%= link_to @release.record_label,
+        @release.record_label_url %></br>
+      <strong>Catalog Number:</strong>
+        <%= @release.catalog_number %></br>
+      <strong>Wiki:</strong>
+        <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></br>
+      <strong>Type:</strong> <%= @release.release_type %></br>
+      <strong>Length:</strong> <%= @release.release_length %></br>
+      <strong>Performing Artists:</strong>
+        <% @release.artists.each do |artist| %>
+          <%= link_to artist.full_name, artist_path(artist) %>,
+        <% end %>
     </div>
     <div class="small-12 large-6 columns left">
       <%= link_to "Delete Release", release_path(@release), method:
@@ -22,5 +31,6 @@
       <%= link_to "Edit Release", edit_release_path(@release), class:
         "tiny button left left-button" %>
     </div>
+    <%= render "link_artist" %>
   </div>
 </div>

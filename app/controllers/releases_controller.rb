@@ -41,6 +41,10 @@ class ReleasesController < ApplicationController
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
     elsif @release.update(release_params)
+      if params[:release][:artists]
+        @release.artists << Artist.find(params[:release][:artists])
+        @band.artists << Artist.find(params[:release][:artists])
+      end
       flash[:success] = "Release updated."
       redirect_to release_path(@release)
     else
