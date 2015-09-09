@@ -7,14 +7,21 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Bandtree</a></h1>
-      </li>
-    </ul>
+  <nav class="top-bar" data-topbar role="navigation"
+  data-options="is_hover: false">
 
-    <section class="top-bar-section">
+  <section class="top-bar-section">
+      <ul class="left">
+        <li class="name has-dropdown">
+          <h1><a href="#">Bandtree</a></h1>
+          <ul class="dropdown">
+            <li><%= link_to 'Bands', bands_path %></li>
+            <li><%= link_to 'Releases', releases_path %></li>
+            <li><%= link_to 'Artists', artists_path %></li>
+            <li><%= link_to 'Home', root_path %></li>
+          </ul>
+        </li>
+      </ul>
       <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
