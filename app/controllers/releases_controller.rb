@@ -1,6 +1,7 @@
 class ReleasesController < ApplicationController
   def index
-    @releases = Release.all.limit(30).order(:title)
+    @releases = Release.order(:title).page params[:page]
+    @index_headers = ("a".."z").to_a + ("0".."9").to_a
   end
 
   def new

@@ -1,6 +1,6 @@
 class BandsController < ApplicationController
   def index
-    @bands = Band.all.limit(30).order(:name)
+    @bands = Band.order(:name).page params[:page]
   end
 
   def new
