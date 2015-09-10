@@ -11,5 +11,9 @@
     <%= link_to "Add a Band", new_band_path,
       class: "tiny button success" %>
   </div>
-  <%= paginate @bands %>
+</div>
+<div class="row">
+  <div class="small-12 large-3 columns">
+    <%= paginate @bands %>
+  </div>
 </div>

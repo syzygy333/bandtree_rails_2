@@ -11,5 +11,9 @@
     <%= link_to "Add an Artist", new_artist_path,
       class: "tiny button success" %>
   </div>
-  <%= paginate @artists %>
+</div>
+<div class="row">
+  <div class="small-12 large-3 columns">
+    <%= paginate @artists %>
+  </div>
 </div>
