@@ -1,10 +1,68 @@
 <div class="row">
-  <div class="small-12 large-4 columns">
+  <div class="small-12 large-3 columns">
     <h1>Releases</h1>
-      <% @releases.each do |release| %>
-        <div class="panel">
-          <p><%= link_to release.title, release_path(release) %></p>
-        </div>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 large-3 columns">
+    <ul class="index-lists">
+      <% @index_headers[0..8].each do |letter| %>
+            <div>
+              <h3><%= letter.upcase %></h3>
+            </div>
+        <% @releases.each do |release| %>
+          <% if release.title[0].downcase == letter %>
+            <li><%= link_to release.title, release_path(release) %></li>
+          <% end %>
+        <% end %>
       <% end %>
+    </ul>
+  </div>
+  <div class="small-12 large-3 columns">
+    <ul class="index-lists">
+      <% @index_headers[9..17].each do |letter| %>
+            <div>
+              <h3><%= letter.upcase %></h3>
+            </div>
+        <% @releases.each do |release| %>
+          <% if release.title[0].downcase == letter %>
+            <li><%= link_to release.title, release_path(release) %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="small-12 large-3 columns">
+    <ul class="index-lists">
+      <% @index_headers[18..25].each do |letter| %>
+            <div>
+              <h3><%= letter.upcase %></h3>
+            </div>
+        <% @releases.each do |release| %>
+          <% if release.title[0].downcase == letter %>
+            <li><%= link_to release.title, release_path(release) %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="small-12 large-3 columns">
+    <ul class="index-lists">
+      <% @index_headers[26..36].each do |letter| %>
+            <div>
+              <h3><%= letter.upcase %></h3>
+            </div>
+        <% @releases.each do |release| %>
+          <% if release.title[0].downcase == letter %>
+            <li><%= link_to release.title, release_path(release) %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 large-3 columns">
+    <%= paginate @releases %>
   </div>
 </div>

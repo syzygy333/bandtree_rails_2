@@ -25,7 +25,7 @@ feature "user links an artist to a release", %{
     click_button "Link artist"
 
     expect(page).to have_content("Release updated")
-    expect(page).to have_content("Performing
-      Artists:\n#{artist.full_name}")
+    expect(page).to have_content("Performing Artists")
+    expect(page).to have_content("#{artist.full_name}")
   end
 end

@@ -36,6 +36,15 @@ h1 a:hover {
   color: $bandtree-green;
 }
 
+.index-lists {
+  list-style: none;
+  margin-left: 0;
+}
+
+.index-lists h3 {
+  border-bottom: 1px solid $bandtree-green;
+}
+
 .release-image {
   margin-bottom: 0;
 }

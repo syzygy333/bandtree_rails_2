@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all.limit(30).order(:last_name)
+    @artists = Artist.order(:last_name).page params[:page]
   end
 
   def new
