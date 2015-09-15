@@ -3,37 +3,44 @@
     <% if @band.band_photo %>
       <%= image_tag(@band.band_photo) %>
     <% end %>
+
     <h1><%= @band.name %></h1>
+
     <div class="panel">
       <p><strong>Biography:</strong> <%= @band.biography %></p>
       <p><strong>Official Website:</strong> <%= link_to @band.official_link, @band.official_link %></p>
       <p><strong>Wiki:</strong> <%= link_to @band.wiki_link, @band.wiki_link %></p>
     </div>
-    <div class="row">
-      <div class="small-12 large-12 columns">
-        <%= link_to "Delete Band", band_path(@band), method: :delete,
-          class: "tiny button alert right right-button" %>
-        <%= link_to "Edit Band", edit_band_path,
-          class: "tiny button left left-button" %>
-        <%= link_to "Add Release", new_band_release_path(@band),
-          class: "tiny button success left middle-button" %>
-      </div>
-    </div>
-    <h1>Releases</h1>
-    <div class="row">
-    <% @releases.each do |release| %>
-      <%= link_to release_path(release) do %>
-        <div class="small-6 medium-4 large-4 columns">
-          <% if release.release_art %>
-            <p class="release-image"><%= image_tag(release.release_art) %></p>
-          <% end %>
-          <div class="panel">
-            <h3><%= release.title %>: <%= release.year_released %></h3>
-            <p><strong>Track List:</strong> <%= release.track_list %></p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+
+    <div class="small-12 large-12 columns">
+      <%= link_to "Delete Band", band_path(@band), method: :delete,
+        class: "tiny button alert right right-button" %>
+      <%= link_to "Edit Band", edit_band_path,
+        class: "tiny button left left-button" %>
+      <%= link_to "Add Release", new_band_release_path(@band),
+        class: "tiny button success left middle-button" %>
     </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h1>Releases</h1>
+  </div>
+</div>
+
+<div class="row">
+  <% @releases.each do |release| %>
+    <%= link_to release_path(release) do %>
+      <div class="small-6 medium-4 large-4 columns">
+        <% if release.release_art %>
+          <p class="release-image"><%= image_tag(release.release_art) %></p>
+        <% end %>
+        <div class="panel">
+          <h3><%= release.title %>: <%= release.year_released %></h3>
+          <p><strong>Track List:</strong> <%= release.track_list %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
