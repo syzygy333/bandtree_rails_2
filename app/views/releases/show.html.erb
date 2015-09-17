@@ -11,8 +11,13 @@
 
     <div class="small-12 medium-6 large-6 columns panel left">
       <h2><%= @release.title %></h2>
-      <strong>Track List:</strong>
-        <%= @release.track_list %></br></br>
+      <strong>Track List:</strong><br>
+        <% @num = 1 %>
+        <% @release.track_list.split("\r\n").each do |track| %>
+          <%= @num %>. <%= track %></br>
+          <% @num += 1 %>
+        <% end %>
+      </br>
       <strong>Year:</strong> <%= @release.year_released %></br>
       <strong>Record Label:</strong>
         <%= link_to @release.record_label,
