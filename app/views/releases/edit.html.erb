@@ -1,6 +1,6 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1>Edit a release</h1>
+    <h1>Add a release</h1>
       <%= form_for [@release] do |f| %>
         <div class="field">
           <%= f.label :title %>
@@ -39,12 +39,24 @@
 
         <div class="field">
           <%= f.label :release_type %>
-          <%= f.text_field :release_type %>
+          <%= f.radio_button :release_type, "CD", checked: true %>
+          <%= f.label :CD, "CD" %>
+          <%= f.radio_button :release_type, "Record" %>
+          <%= f.label :LP, "Record" %>
         </div>
 
         <div class="field">
           <%= f.label :release_length %>
-          <%= f.text_field :release_length %>
+          <%= f.radio_button :release_length, "LP", checked: true %>
+          <%= f.label :LP, "LP" %>
+          <%= f.radio_button :release_length, "EP" %>
+          <%= f.label :EP, "EP" %>
+          <%= f.radio_button :release_length, "CD single" %>
+          <%= f.label :cd_single, "CD single" %>
+          <%= f.radio_button :release_length, "12-inch single" %>
+          <%= f.label :twelve_inch_single, "12-inch single" %>
+          <%= f.radio_button :release_length, "7-inch single" %>
+          <%= f.label :seven_inch_single, "7-inch single" %>
         </div>
 
         <div class="field">
@@ -58,7 +70,7 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "Accept", class: "tiny button radius" %>
+          <%= f.submit "Add Release", class: "tiny button radius" %>
         </div>
       <% end %>
   </div>
