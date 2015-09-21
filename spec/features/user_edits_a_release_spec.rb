@@ -27,8 +27,8 @@ feature "user edits a release", %{
     fill_in "Record label", with: Faker::Lorem.sentence(1)
     fill_in "Record label url", with: Faker::Internet.url
     fill_in "Catalog number", with: 50
-    fill_in "Release type", with: "CD"
-    fill_in "Release length", with: "LP"
+    choose("Record")
+    choose("EP")
 
     click_button "Accept"
 
