@@ -1,6 +1,6 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1>Edit a release</h1>
+    <h1>Edit release</h1>
       <%= form_for [@release] do |f| %>
         <div class="field">
           <%= f.label :title %>
@@ -38,13 +38,25 @@
         </div>
 
         <div class="field">
-          <%= f.label :release_type %>
-          <%= f.text_field :release_type %>
+          <%= f.label :release_type, "Format" %>
+          <%= f.radio_button :release_type, "CD", checked: true %>
+          <%= f.label :release_type_cd, "CD" %>
+          <%= f.radio_button :release_type, "Record" %>
+          <%= f.label :release_type_record, "Record" %>
         </div>
 
         <div class="field">
-          <%= f.label :release_length %>
-          <%= f.text_field :release_length %>
+          <%= f.label :release_length, "Length" %>
+          <%= f.radio_button :release_length, "LP", checked: true %>
+          <%= f.label :release_length_lp, "LP" %>
+          <%= f.radio_button :release_length, "EP" %>
+          <%= f.label :release_length_ep, "EP" %>
+          <%= f.radio_button :release_length, "CD single" %>
+          <%= f.label :release_length_cd_single, "CD single" %>
+          <%= f.radio_button :release_length, "12 inch single" %>
+          <%= f.label :release_length_12_inch_single, "12-inch single" %>
+          <%= f.radio_button :release_length, "7 inch single" %>
+          <%= f.label :release_length_7_inch_single, "7-inch single" %>
         </div>
 
         <div class="field">
