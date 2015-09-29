@@ -2,6 +2,6 @@
   <div class="field">
     <%= f.label :artists, "20 most recent artists" %>
     <%= f.collection_select :artists, Artist.all.limit(20).order(id: :desc), :id, :full_name, prompt: true %>
-    <%= f.submit "Link artist", class: "tiny button radius" %>
+    <%= f.submit "Link artist", class: "tiny button" %>
   </div>
 <% end %>

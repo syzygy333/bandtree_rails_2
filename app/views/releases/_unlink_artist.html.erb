@@ -1,0 +1,7 @@
+<%= form_for @release do |f| %>
+  <div class="field">
+    <%= f.label :artists, "Connected artists" %>
+    <%= f.collection_select :artists, @release.artists.order(id: :desc), :id, :full_name, prompt: true %>
+    <%= f.submit "Unlink artist", class: "tiny alert button" %>
+  </div>
+<% end %>
