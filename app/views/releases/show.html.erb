@@ -3,13 +3,13 @@
 
     <h1><%= link_to @band.name, band_path(@band) %></h1>
 
-    <div class="small-12 medium-6 large-6 columns right">
+    <div class="small-12 medium-6 large-6 columns right release-image-show">
       <% if @release.release_art %>
         <%= image_tag(@release.release_art) %>
       <% end %>
     </div>
 
-    <div class="small-12 medium-6 large-6 columns panel left">
+    <div class="small-12 medium-6 large-6 columns panel left release-panel">
       <h2><%= @release.title %></h2>
       <strong>Track List:</strong><br>
         <% @num = 1 %>
@@ -30,13 +30,15 @@
       <strong>Length:</strong> <%= @release.release_length %></br>
     </div>
 
-    <div class="small-12 medium-6 large-6 columns left">
-      <%= link_to "Delete Release", release_path(@release), method:
-        :delete, class: "tiny button alert right right-button" %>
-      <%= link_to "Edit Release", edit_release_path(@release), class:
-        "tiny button left left-button" %>
-    </div>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-12 medium-6 large-6 columns left">
+    <%= link_to "Delete Release", release_path(@release), method:
+      :delete, class: "tiny button alert right right-button-release-show" %>
+    <%= link_to "Edit Release", edit_release_path(@release), class:
+      "tiny button left left-button-release-show" %>
   </div>
 </div>
 
@@ -48,12 +50,18 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
+    <%= render "unlink_artist" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
     <h1>Performing Artists</h1>
   </div>
 </div>
 
 <div class="row">
-  <% @release.artists.each do |artist| %>
+  <% @artists.each do |artist| %>
     <%= link_to artist_path(artist) do %>
       <div class="small-6 medium-3 large-3 columns">
         <% if artist.portrait %>
@@ -65,5 +73,4 @@
       </div>
     <% end %>
   <% end %>
-
 </div>

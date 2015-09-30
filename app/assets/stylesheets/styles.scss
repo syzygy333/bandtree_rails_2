@@ -17,7 +17,7 @@ $bandtree-green: #43ac6a;
 }
 
 .splash-title {
-  font-size: 5em;
+  font-size: 20vw;
   font-weight: 900;
   text-align: center;
 }
@@ -49,14 +49,29 @@ h1 a:hover {
   margin-bottom: 0;
 }
 
+.release-image-show {
+  margin-bottom: 20px;
+  padding-right: 0;
+}
+
+.release-panel {
+  min-height: 470px;
+}
+
 .right-button {
-  margin-right: 20px;
   margin-top: -20px;
 }
 
+.right-button-release-show {
+  margin: -20px 0 20px;
+}
+
 .left-button {
-  margin-left: 20px;
   margin-top: -20px;
+}
+
+.left-button-release-show {
+  margin: -20px 0 20px 15px;
 }
 
 .middle-button {

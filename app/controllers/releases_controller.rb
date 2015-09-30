@@ -28,6 +28,7 @@ class ReleasesController < ApplicationController
   def show
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
+    @artists = @release.artists.order(:last_name)
   end
 
   def edit
@@ -42,7 +43,10 @@ class ReleasesController < ApplicationController
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
     elsif @release.update(release_params)
-      if params[:release][:artists]
+      if params[:release][:artists] && (@release.artists.include?(Artist.find(params[:release][:artists])))
+        @release.artists.delete(Artist.find(params[:release][:artists]))
+        @band.artists.delete(Artist.find(params[:release][:artists]))
+      elsif params[:release][:artists]
         @release.artists << Artist.find(params[:release][:artists])
         @band.artists << Artist.find(params[:release][:artists])
       end
