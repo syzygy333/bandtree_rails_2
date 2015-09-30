@@ -26,8 +26,13 @@ feature "user links an artist to a release", %{
     end
     click_button "Link artist"
 
+    within("#unlink") do
+      select(artist.full_name, from: "Connected artists")
+    end
+    click_button "Unlink artist"
+
     expect(page).to have_content("Release updated")
     expect(page).to have_content("Performing Artists")
-    expect(page).to have_link("#{artist.full_name}")
+    expect(page).to_not have_link("#{artist.full_name}")
   end
 end
