@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "carrierwave"
 gem 'foundation-rails'
 gem "kaminari"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
