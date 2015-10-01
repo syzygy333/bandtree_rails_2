@@ -64,7 +64,7 @@
   <% @artists.each do |artist| %>
     <%= link_to artist_path(artist) do %>
       <div class="small-6 medium-3 large-3 columns">
-        <%= image_tag(artist.portrait, class: "release-image") %>
+        <%= image_tag(artist.portrait, class: "artist-image") %>
         <div class="panel">
           <h3><%= artist.full_name %></h3>
         </div>

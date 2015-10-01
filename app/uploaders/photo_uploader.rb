@@ -4,7 +4,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   storage :file
 
   def default_url(*args)
-    "<%= fa_icon user %>"
+    "placeholder-user"
   end
 
   def store_dir
