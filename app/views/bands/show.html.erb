@@ -40,7 +40,12 @@
         <p class="release-image"><%= image_tag(release.release_art) %></p>
         <div class="panel">
           <h3><%= release.title %>: <%= release.year_released %></h3>
-          <p><strong>Track List:</strong> <%= release.track_list %></p>
+          <p><strong>Track List:</strong></p>
+          <% @num = 1 %>
+          <% release.track_list.split("\r\n").each do |track| %>
+            <%= "#{@num}. #{track} " %>
+            <% @num += 1 %>
+          <% end %>
         </div>
       </div>
     <% end %>
