@@ -1,5 +1,5 @@
 class Release < ActiveRecord::Base
-  mount_uploader :release_art, PhotoUploader
+  mount_uploader :release_art, ReleaseArtUploader
   paginates_per 500
 
   has_and_belongs_to_many :bands

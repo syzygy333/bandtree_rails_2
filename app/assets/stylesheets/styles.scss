@@ -36,6 +36,16 @@ h1 a:hover {
   color: $bandtree-green;
 }
 
+.artist-image {
+  height: auto;
+  width: 220px;
+}
+
+.artist-show-image {
+  margin-left: 20px;
+  width: 50%;
+}
+
 .index-lists {
   list-style: none;
   margin-left: 0;

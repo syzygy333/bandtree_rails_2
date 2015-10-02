@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  mount_uploader :portrait, PhotoUploader
+  mount_uploader :portrait, ArtistPortraitUploader
 
   has_and_belongs_to_many :bands
   has_and_belongs_to_many :releases

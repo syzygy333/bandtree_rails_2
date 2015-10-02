@@ -24,6 +24,7 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     @releases = @artist.releases.order(year_released: :desc)
+    @bands = @artist.bands.order(:name).uniq
   end
 
   def edit

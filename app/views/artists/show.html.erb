@@ -1,41 +1,71 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <% if @artist.portrait %>
-      <%= image_tag(@artist.portrait) %>
-    <% end %>
     <% if @artist.stage_name_preferred? %>
       <h1><%= @artist.stage_name %></h1>
     <% else %>
-      <h1><%= @artist.first_name + " " + @artist.last_name %></h1>
+      <h1><%= @artist.full_name %></h1>
     <% end %>
-    <div class="panel">
+    <div class="panel clearfix">
+      <%= image_tag(@artist.portrait, class: "artist-show-image right") %>
       <p><strong>Biography:</strong> <%= @artist.biography %></p>
       <p><strong>Official Website:</strong> <%= link_to @artist.official_link, @artist.official_link %></p>
       <p><strong>Wiki:</strong> <%= link_to @artist.wiki_link, @artist.wiki_link %></p>
     </div>
-    <div class="row">
-      <div class="small-12 large-12 columns">
-        <%= link_to "Delete Artist", artist_path(@artist), method: :delete,
-          class: "tiny button alert right right-button" %>
-        <%= link_to "Edit Artist", edit_artist_path,
-          class: "tiny button left left-button" %>
-      </div>
-    </div>
-    <h1>Releases</h1>
-    <div class="row">
-    <% @releases.each do |release| %>
-      <%= link_to release_path(release) do %>
-        <div class="small-6 medium-4 large-4 columns">
-          <% if release.release_art %>
-            <p class="release-image"><%= image_tag(release.release_art) %></p>
-          <% end %>
-          <div class="panel">
-            <h3><%= release.title %>: <%= release.year_released %></h3>
-            <p><strong>Track List:</strong> <%= release.track_list %></p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <div class="small-12 large-12 columns">
+      <%= link_to "Delete Artist", artist_path(@artist), method: :delete,
+        class: "tiny button alert right right-button" %>
+      <%= link_to "Edit Artist", edit_artist_path,
+        class: "tiny button left left-button" %>
     </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h1>Bands</h1>
+  </div>
+</div>
+
+<div class="row">
+  <% @bands.each do |band| %>
+    <%= link_to band_path(band) do %>
+      <div class="small-6 medium-3 large-3 columns">
+        <p class="release-image"><%= image_tag(band.band_photo) %></p>
+        <div class="panel">
+          <h3><%= band.name %></h3>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h1>Releases</h1>
+  </div>
+</div>
+
+<div class="row">
+  <% @releases.each do |release| %>
+    <%= link_to release_path(release) do %>
+      <div class="small-6 medium-4 large-4 columns">
+        <p class="release-image"><%= image_tag(release.release_art) %></p>
+        <div class="panel">
+          <h3><%= release.title %>: <%= release.year_released %></h3>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
