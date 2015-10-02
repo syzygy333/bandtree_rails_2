@@ -1,23 +1,21 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <%= image_tag(@artist.portrait) %>
     <% if @artist.stage_name_preferred? %>
       <h1><%= @artist.stage_name %></h1>
     <% else %>
       <h1><%= @artist.full_name %></h1>
     <% end %>
-    <div class="panel">
+    <div class="panel clearfix">
+      <%= image_tag(@artist.portrait, class: "artist-show-image right") %>
       <p><strong>Biography:</strong> <%= @artist.biography %></p>
       <p><strong>Official Website:</strong> <%= link_to @artist.official_link, @artist.official_link %></p>
       <p><strong>Wiki:</strong> <%= link_to @artist.wiki_link, @artist.wiki_link %></p>
     </div>
-    <div class="row">
-      <div class="small-12 large-12 columns">
-        <%= link_to "Delete Artist", artist_path(@artist), method: :delete,
-          class: "tiny button alert right right-button" %>
-        <%= link_to "Edit Artist", edit_artist_path,
-          class: "tiny button left left-button" %>
-      </div>
+    <div class="small-12 large-12 columns">
+      <%= link_to "Delete Artist", artist_path(@artist), method: :delete,
+        class: "tiny button alert right right-button" %>
+      <%= link_to "Edit Artist", edit_artist_path,
+        class: "tiny button left left-button" %>
     </div>
   </div>
 </div>
