@@ -1,22 +1,19 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-
     <h1><%= link_to @band.name, band_path(@band) %></h1>
 
     <div class="small-12 medium-6 large-6 columns right release-image-show">
-      <% if @release.release_art %>
-        <%= image_tag(@release.release_art) %>
-      <% end %>
+      <%= image_tag(@release.release_art) %>
     </div>
 
     <div class="small-12 medium-6 large-6 columns panel left release-panel">
       <h2><%= @release.title %></h2>
       <strong>Track List:</strong><br>
-        <% @num = 1 %>
-        <% @release.track_list.split("\r\n").each do |track| %>
-          <%= @num %>. <%= track %></br>
-          <% @num += 1 %>
-        <% end %>
+      <% @num = 1 %>
+      <% @release.track_list.split("\r\n").each do |track| %>
+        <%= @num %>. <%= track %></br>
+        <% @num += 1 %>
+      <% end %>
       </br>
       <strong>Year:</strong> <%= @release.year_released %></br>
       <strong>Record Label:</strong>
@@ -44,6 +41,12 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
     <%= render "link_artist" %>
   </div>
 </div>
@@ -51,6 +54,12 @@
 <div class="row">
   <div class="small-12 large-12 columns">
     <%= render "unlink_artist" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <hr>
   </div>
 </div>
 
