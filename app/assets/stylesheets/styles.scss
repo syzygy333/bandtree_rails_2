@@ -87,3 +87,13 @@ h1 a:hover {
 .middle-button {
   margin-top: -20px;
 }
+
+.artist-column {
+  a { display: block; }
+  &:nth-child(4n+5) { clear: left; }
+}
+
+.release-column {
+  a { display: block; }
+  &:nth-child(3n+4) { clear: left; }
+}
