@@ -65,19 +65,19 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1>Performing Artists</h1>
+    <h1>Performing Artists (<%= @artists.size %>)</h1>
   </div>
 </div>
 
 <div class="row">
   <% @artists.each do |artist| %>
-    <%= link_to artist_path(artist) do %>
-      <div class="small-6 medium-3 large-3 columns">
+    <div class="artist-column small-6 medium-3 large-3 columns">
+      <%= link_to artist_path(artist) do %>
         <%= image_tag(artist.portrait, class: "artist-image") %>
         <div class="panel">
           <h3><%= artist.full_name %></h3>
         </div>
+        <% end %>
       </div>
-    <% end %>
   <% end %>
 </div>
