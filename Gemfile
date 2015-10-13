@@ -14,6 +14,7 @@ gem "carrierwave"
 gem 'foundation-rails'
 gem "kaminari"
 gem "font-awesome-rails"
+gem "elasticsearch-model"
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

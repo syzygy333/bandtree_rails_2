@@ -29,6 +29,7 @@ class ReleasesController < ApplicationController
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
     @artists = @release.artists.order(:last_name)
+    @linkable_artists = Artist.search(params[:search]).records
   end
 
   def edit
