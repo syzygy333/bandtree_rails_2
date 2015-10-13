@@ -5,7 +5,6 @@ $bandtree-green: #43ac6a;
   background-image: image-url(treesplash6);
   background-size: cover;
   color: #ffffff;
-  font-size: 2em;
   position: relative;
   height: 810px;
   text-align: center;
@@ -20,6 +19,15 @@ $bandtree-green: #43ac6a;
   font-size: 20vw;
   font-weight: 900;
   text-align: center;
+}
+
+.splash-text {
+  background-color: #222222;
+  font-size: 2em;
+  line-height: 36px;
+  margin: 0 -15px 0 -15px;
+  opacity: 0.95;
+  padding: 20px;
 }
 
 h1,
