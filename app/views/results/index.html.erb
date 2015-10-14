@@ -1,6 +1,17 @@
-<ul>
-  <% @pg_search_documents.each do |pg_search_document| %>
-    <%= link_to pg_search_document.searchable.title,
-      pg_search_document.searchable %>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="small-12 large-4 columns">
+    <h1>Search Results</h1>
+    <ul class="index-lists">
+      <% @pg_search_documents.each do |pg_search_document| %>
+        <h3><%= pg_search_document.searchable_type %></h3>
+        <% if pg_search_document.searchable_type == "Artist" || pg_search_document.searchable_type == "Band" %>
+          <li><%= link_to pg_search_document.content,
+            pg_search_document.searchable %></li>
+        <% else %>
+          <li><%= link_to Release.find(pg_search_document.searchable_id).title,
+            pg_search_document.searchable %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -24,14 +24,17 @@
         <li class="has-form">
           <div class="row collapse">
             <div class="large-8 small-9 columns">
-              <input type="text" placeholder="Find Stuff">
+              <%= form_tag results_path, method: :get do %>
+                <%= text_field_tag :query, params[:query] %>
             </div>
             <div class="large-4 small-3 columns">
-              <a href="#" class="button expand">Search</a>
+                <%= submit_tag "Search", name: nil, class: "button expand" %>
+              <% end %>
             </div>
           </div>
         </li>
       </ul>
+
       <ul class="right">
         <% if current_user %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
