@@ -22,7 +22,7 @@ feature "user links an artist to a release", %{
 
     visit release_path(release)
     within("#link") do
-      select(artist.full_name, from: "20 most recent artists")
+      select(artist.full_name, from: "All artists")
     end
     click_button "Link artist"
 
