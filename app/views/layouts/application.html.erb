@@ -21,7 +21,21 @@
             <li><%= link_to 'Home', root_path %></li>
           </ul>
         </li>
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <%= form_tag results_path, method: :get do %>
+                <%= text_field_tag :query, params[:query],
+                placeholder: "Artist, Band, Release", id: "search" %>
+            </div>
+            <div class="large-4 small-3 columns">
+                <%= submit_tag "Search", name: nil, class: "button expand" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
       </ul>
+
       <ul class="right">
         <% if current_user %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>

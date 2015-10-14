@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :releases, except: [:new, :create]
 
   resources :artists
+
+  resources :results, only: [:index]
 end
