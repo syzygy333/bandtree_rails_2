@@ -22,10 +22,10 @@ $bandtree-green: #43ac6a;
 }
 
 .splash-text {
-  background-color: #222222;
+  background-color: $foundation-black;
   font-size: 2em;
   line-height: 36px;
-  margin: 0 -15px 0 -15px;
+  margin: 0 -15px;
   opacity: 0.95;
   padding: 20px;
 }
