@@ -1,0 +1,6 @@
+<ul>
+  <% @pg_search_documents.each do |pg_search_document| %>
+    <%= link_to pg_search_document.searchable.title,
+      pg_search_document.searchable %>
+  <% end %>
+</ul>
