@@ -1,6 +1,6 @@
 class Band < ActiveRecord::Base
   mount_uploader :band_photo, BandPhotoUploader
-  
+
   include PgSearch
   multisearchable :against => [:name]
 
