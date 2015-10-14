@@ -2,7 +2,7 @@ class Artist < ActiveRecord::Base
   mount_uploader :portrait, ArtistPortraitUploader
 
   include PgSearch
-  multisearchable :against => [:first_name, :middle_name,
+  multisearchable against: [:first_name, :middle_name,
     :last_name, :stage_name]
 
   has_and_belongs_to_many :bands

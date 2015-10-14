@@ -2,7 +2,7 @@ class Release < ActiveRecord::Base
   mount_uploader :release_art, ReleaseArtUploader
 
   include PgSearch
-  multisearchable :against => [:title, :track_list, :record_label]
+  multisearchable against: [:title, :track_list, :record_label]
 
   paginates_per 500
 
