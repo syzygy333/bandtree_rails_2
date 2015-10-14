@@ -2,14 +2,22 @@
   <div class="small-12 large-4 columns">
     <h1>Search Results</h1>
     <ul class="index-lists">
+      <h3>Artists</h3>
       <% @pg_search_documents.each do |pg_search_document| %>
-        <h3><%= pg_search_document.searchable_type %></h3>
-        <% if pg_search_document.searchable_type == "Artist" || pg_search_document.searchable_type == "Band" %>
-          <li><%= link_to pg_search_document.content,
-            pg_search_document.searchable %></li>
-        <% else %>
-          <li><%= link_to Release.find(pg_search_document.searchable_id).title,
-            pg_search_document.searchable %></li>
+        <% if pg_search_document.searchable_type == "Artist" %>
+          <li><%= link_to Artist.find(pg_search_document.searchable_id).full_name, pg_search_document.searchable %></li>
+        <% end %>
+      <% end %>
+      <h3>Bands</h3>
+      <% @pg_search_documents.each do |pg_search_document| %>
+        <% if pg_search_document.searchable_type == "Band" %>
+          <li><%= link_to Band.find(pg_search_document.searchable_id).name, pg_search_document.searchable %></li>
+        <% end %>
+      <% end %>
+      <h3>Releases</h3>
+      <% @pg_search_documents.each do |pg_search_document| %>
+        <% if pg_search_document.searchable_type == "Release" %>
+          <li><%= link_to Release.find(pg_search_document.searchable_id).title, pg_search_document.searchable %></li>
         <% end %>
       <% end %>
     </ul>
