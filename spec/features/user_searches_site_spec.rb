@@ -16,15 +16,34 @@ feature "user links an artist to a release", %{
     click_button "Log in"
   end
 
-  scenario "searches for an artist" do
+  scenario "searches the database" do
     artist = FactoryGirl.create(:artist)
+    band = FactoryGirl.create(:band)
+    release = FactoryGirl.create(:release)
 
-    fill_in("Artist, Band, Release", with: artist.first_name)
-    click_button "Search"
-    save_and_open_page
+    visit "/results?utf8=%E2%9C%93&query=#{artist.first_name}"
 
     expect(page).to have_content("Search Results")
-    expect(page).to have_content("")
-    expect(page).to_not have_link("")
+    expect(page).to have_content(artist.full_name)
+
+    visit "/results?utf8=%E2%9C%93&query=#{artist.middle_name}"
+
+    expect(page).to have_content("Search Results")
+    expect(page).to have_content(artist.full_name)
+
+    visit "/results?utf8=%E2%9C%93&query=#{artist.last_name}"
+
+    expect(page).to have_content("Search Results")
+    expect(page).to have_content(artist.full_name)
+
+    visit "/results?utf8=%E2%9C%93&query=#{band.name}"
+
+    expect(page).to have_content("Search Results")
+    expect(page).to have_link(band.name)
+
+    visit "/results?utf8=%E2%9C%93&query=#{release.title}"
+
+    expect(page).to have_content("Search Results")
+    expect(page).to have_content(release.title)
   end
 end
