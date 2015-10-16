@@ -14,4 +14,12 @@ class Artist < ActiveRecord::Base
   def full_name
     "#{first_name} #{middle_name} #{last_name}"
   end
+
+  def connectedness
+    total_artists = 0
+    self.releases.each do |release|
+      total_artists += release.artists.count
+    end
+    total_artists
+  end
 end
