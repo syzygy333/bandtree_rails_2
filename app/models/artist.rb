@@ -17,8 +17,8 @@ class Artist < ActiveRecord::Base
 
   def connectedness
     total_artists = 0
-    self.releases.each do |release|
-      total_artists += release.artists.count
+    releases.each do |release|
+      total_artists += release.artists.count - 1
     end
     total_artists
   end
