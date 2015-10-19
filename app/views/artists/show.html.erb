@@ -1,10 +1,6 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <% if @artist.stage_name_preferred? %>
-      <h1><%= @artist.stage_name %></h1>
-    <% else %>
-      <h1><%= @artist.full_name %></h1>
-    <% end %>
+    <h1><%= @artist.stage_name_or_full_name %></h1>
     <div class="panel clearfix">
       <%= image_tag(@artist.portrait, class: "artist-show-image right") %>
       <p><strong>Biography:</strong> <%= @artist.biography %></p>
