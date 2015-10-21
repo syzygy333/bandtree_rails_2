@@ -39,16 +39,17 @@ class ReleasesController < ApplicationController
   def update
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
+    @artist = Artist.find(params[:release][:artists])
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
     elsif @release.update(release_params)
-      if params[:release][:artists] && (@release.artists.include?(Artist.find(params[:release][:artists])))
-        @release.artists.delete(Artist.find(params[:release][:artists]))
-        @band.artists.delete(Artist.find(params[:release][:artists]))
+      if params[:release][:artists] && @release.artists.include?(@artist)
+        @release.artists.delete(@artist)
+        @band.artists.delete(@artist)
       elsif params[:release][:artists]
-        @release.artists << Artist.find(params[:release][:artists])
-        @band.artists << Artist.find(params[:release][:artists])
+        @release.artists << @artist
+        @band.artists << @artist
       end
       flash[:success] = "Release updated."
       redirect_to release_path(@release)
