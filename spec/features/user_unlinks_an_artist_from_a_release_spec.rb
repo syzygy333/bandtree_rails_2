@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "user links an artist to a release", %{
   As a signed up user
-  I want to link an artist to a release
+  I want to unlink an artist from a release
   So that I can make the tree better
 } do
   before :each do

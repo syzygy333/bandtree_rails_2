@@ -39,7 +39,9 @@ class ReleasesController < ApplicationController
   def update
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    @artist = Artist.find(params[:release][:artists])
+    if params[:release][:artists]
+      @artist = Artist.find(params[:release][:artists])
+    end
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
