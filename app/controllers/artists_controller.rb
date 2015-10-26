@@ -12,6 +12,9 @@ class ArtistsController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
+    elsif current_user && !current_user.admin?
+      flash[:alert] = "You must have admin status to do that."
+      render :new
     elsif current_user && current_user.admin?
       @artist.save
       flash[:success] = "Artist added."
