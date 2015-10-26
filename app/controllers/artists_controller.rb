@@ -12,7 +12,8 @@ class ArtistsController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
-    elsif @artist.save
+    elsif current_user && current_user.admin?
+      @artist.save
       flash[:success] = "Artist added."
       redirect_to artist_path(@artist)
     else
@@ -33,7 +34,7 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    if current_user
+    if current_user && current_user.admin?
       @artist.update(artist_params)
       flash[:success] = "Artist updated."
       redirect_to artist_path(@artist)
@@ -48,7 +49,7 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist = Artist.find(params[:id])
-    if current_user
+    if current_user && current_user.admin?
       @artist.destroy
       flash[:success] = "Artist deleted."
       redirect_to artists_path
@@ -59,11 +60,6 @@ class ArtistsController < ApplicationController
   end
 
   private
-
-  def full_name
-    @artist = Artist.find(params[:id])
-    @artist.first_name + " " + @artist.last_name
-  end
 
   def artist_params
     params.require(:artist).permit(

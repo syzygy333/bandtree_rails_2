@@ -15,7 +15,8 @@ class ReleasesController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
-    elsif @release.save
+    elsif current_user && current_user.admin?
+      @release.save
       @band.releases << @release
       flash[:success] = "Release added."
       redirect_to release_path(@release)
@@ -42,7 +43,8 @@ class ReleasesController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       redirect_to release_path(@release)
-    elsif @release.update(release_params)
+    elsif current_user && current_user.admin?
+      @release.update(release_params)
       if params[:release][:artists] && (@release.artists.include?(Artist.find(params[:release][:artists])))
         @release.artists.delete(Artist.find(params[:release][:artists]))
         @band.artists.delete(Artist.find(params[:release][:artists]))
@@ -61,7 +63,7 @@ class ReleasesController < ApplicationController
   def destroy
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    if current_user
+    if current_user && current_user.admin?
       @release.destroy
       flash[:success] = "Release deleted."
       redirect_to band_path(@band)
