@@ -6,7 +6,7 @@ feature 'user adds a band', %Q{
   So that I can grow the bandtree
 } do
 
-  scenario 'valid information in form to add a band' do
+  scenario 'non-admin inputs valid information' do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
@@ -25,10 +25,10 @@ feature 'user adds a band', %Q{
 
     click_button "Add Band"
 
-    expect(page).to have_content("You must have admin status")
+    expect(page).to have_content("You must be an admin")
   end
 
-  scenario 'valid information in form to add a band' do
+  scenario 'admin inputs valid information' do
     user = FactoryGirl.create(:admin)
 
     visit new_user_session_path
@@ -50,7 +50,7 @@ feature 'user adds a band', %Q{
     expect(page).to have_content("Band added")
   end
 
-  scenario 'invalid information in form to add a band' do
+  scenario 'admin inputs invalid information' do
     user = FactoryGirl.create(:admin)
 
     visit user_session_path
@@ -66,7 +66,6 @@ feature 'user adds a band', %Q{
     fill_in "Official link", with: band.official_link
     fill_in "Wiki link", with: band.wiki_link
 
-    save_and_open_page
     click_button "Add Band"
 
     expect(page).to have_content("Name can't be blank")

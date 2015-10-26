@@ -6,7 +6,7 @@ feature 'user adds a release', %Q{
   So that I can grow the bandtree
 } do
 
-  before :each do
+  scenario 'non-admin inputs valid information' do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
@@ -15,9 +15,36 @@ feature 'user adds a release', %Q{
     fill_in 'Password', with: user.password
 
     click_button 'Log in'
+
+    band = FactoryGirl.create(:band)
+
+    visit band_path(band)
+    click_link "Add Release"
+
+    fill_in "Title", with: Faker::Lorem.sentence(2)
+    fill_in "Track list", with: Faker::Lorem.sentence(2)
+    fill_in "Record label", with: Faker::Lorem.sentence(1)
+    fill_in "Record label url", with: Faker::Internet.url
+    fill_in "Catalog number", with: 50
+    choose("CD")
+    choose("LP")
+
+    click_button "Add Release"
+
+    expect(page).to have_content("You must be an admin")
+    expect(page).to have_content(50)
   end
 
-  scenario 'valid information in form to add a release' do
+  scenario 'admin inputs valid information' do
+    user = FactoryGirl.create(:admin)
+
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Log in'
+
     band = FactoryGirl.create(:band)
 
     visit band_path(band)
@@ -38,7 +65,16 @@ feature 'user adds a release', %Q{
     expect(page).to have_content(50)
   end
 
-  scenario 'invalid information in form to add a release' do
+  scenario 'admin inputs invalid information' do
+    user = FactoryGirl.create(:admin)
+
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Log in'
+
     band = FactoryGirl.create(:band)
 
     visit band_path(band)

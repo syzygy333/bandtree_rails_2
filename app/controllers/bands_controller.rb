@@ -13,7 +13,7 @@ class BandsController < ApplicationController
       flash[:alert] = "You must be signed in to do that."
       render :new
     elsif !current_user.admin?
-      flash[:alert] = "You must have admin status to do that."
+      flash[:alert] = "You must be an admin to do that."
       render :new
     elsif @band.save
       flash[:success] = "Band added."
@@ -35,7 +35,7 @@ class BandsController < ApplicationController
 
   def update
     @band = Band.find(params[:id])
-    if current_user && current_user.admin?
+    if current_user.admin?
       @band.update(band_params)
       flash[:success] = "Band updated."
       redirect_to band_path(@band)
