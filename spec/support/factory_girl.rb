@@ -7,6 +7,13 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :admin, class: User do
+    email Faker::Internet.email
+    password 'password'
+    password_confirmation 'password'
+    admin? true
+  end
+
   factory :band do
     name Faker::Lorem.sentence(2)
     biography Faker::Lorem.paragraph(4)

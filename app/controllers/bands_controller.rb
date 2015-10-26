@@ -12,11 +12,10 @@ class BandsController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
-    elsif current_user && !current_user.admin?
+    elsif !current_user.admin?
       flash[:alert] = "You must have admin status to do that."
       render :new
-    elsif current_user && current_user.admin?
-      @band.save
+    elsif @band.save
       flash[:success] = "Band added."
       redirect_to band_path(@band)
     else
