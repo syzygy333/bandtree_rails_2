@@ -15,6 +15,9 @@ class ReleasesController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      render :new
     elsif @release.save
       @band.releases << @release
       flash[:success] = "Release added."
@@ -40,7 +43,10 @@ class ReleasesController < ApplicationController
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
     if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to release_path(@release)
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
       redirect_to release_path(@release)
     elsif @release.update(release_params)
       if params[:release][:artists] && (@release.artists.include?(Artist.find(params[:release][:artists])))
@@ -61,12 +67,15 @@ class ReleasesController < ApplicationController
   def destroy
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    if current_user
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to band_path(@band)
+    elsif current_user.admin?
       @release.destroy
       flash[:success] = "Release deleted."
       redirect_to band_path(@band)
     else
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
       redirect_to band_path(@band)
     end
   end

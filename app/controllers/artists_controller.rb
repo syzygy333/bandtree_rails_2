@@ -12,6 +12,9 @@ class ArtistsController < ApplicationController
     if current_user == nil
       flash[:alert] = "You must be signed in to do that."
       render :new
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      render :new
     elsif @artist.save
       flash[:success] = "Artist added."
       redirect_to artist_path(@artist)
@@ -33,12 +36,14 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    if current_user
-      @artist.update(artist_params)
-      flash[:success] = "Artist updated."
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
       redirect_to artist_path(@artist)
-    elsif current_user == nil
-      flash[:alert] = "You must be signed in to do that."
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to artist_path(@artist)
+    elsif @artist.update(artist_params)
+      flash[:success] = "Artist updated."
       redirect_to artist_path(@artist)
     else
       flash[:alert] = @artist.errors.full_messages.join(".  ")
@@ -48,22 +53,20 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist = Artist.find(params[:id])
-    if current_user
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to artist_path(@artist)
+    elsif current_user.admin?
       @artist.destroy
       flash[:success] = "Artist deleted."
       redirect_to artists_path
     else
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
       redirect_to artist_path(@artist)
     end
   end
 
   private
-
-  def full_name
-    @artist = Artist.find(params[:id])
-    @artist.first_name + " " + @artist.last_name
-  end
 
   def artist_params
     params.require(:artist).permit(
