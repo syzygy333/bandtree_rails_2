@@ -6,7 +6,7 @@ feature 'user adds a band', %Q{
   So that I can grow the bandtree
 } do
 
-  scenario 'guest inputs valid information' do
+  scenario "guest inputs valid information" do
     visit new_band_path
     band = FactoryGirl.create(:band)
     fill_in "Name", with: band.name
@@ -21,15 +21,15 @@ feature 'user adds a band', %Q{
     expect(page).to have_content(band.biography)
   end
 
-  scenario 'non-admin inputs valid information' do
+  scenario "non-admin inputs valid information" do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     visit new_band_path
     band = FactoryGirl.create(:band)
@@ -45,15 +45,15 @@ feature 'user adds a band', %Q{
     expect(page).to have_content(band.biography)
   end
 
-  scenario 'admin inputs valid information' do
+  scenario "admin inputs valid information" do
     user = FactoryGirl.create(:admin)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     visit new_band_path
     band = FactoryGirl.create(:band)
@@ -70,15 +70,15 @@ feature 'user adds a band', %Q{
     expect(page).to have_content("Delete Band")
   end
 
-  scenario 'admin inputs invalid information' do
+  scenario "admin inputs invalid information" do
     user = FactoryGirl.create(:admin)
 
-    visit user_session_path
+    visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     visit new_band_path
     band = FactoryGirl.create(:band)

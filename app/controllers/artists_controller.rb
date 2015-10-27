@@ -36,12 +36,14 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    if current_user && current_user.admin?
-      @artist.update(artist_params)
-      flash[:success] = "Artist updated."
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
       redirect_to artist_path(@artist)
-    elsif current_user == nil
-      flash[:alert] = "You must be signed in to do that."
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to artist_path(@artist)
+    elsif @artist.update(artist_params)
+      flash[:success] = "Artist updated."
       redirect_to artist_path(@artist)
     else
       flash[:alert] = @artist.errors.full_messages.join(".  ")

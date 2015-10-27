@@ -35,12 +35,14 @@ class BandsController < ApplicationController
 
   def update
     @band = Band.find(params[:id])
-    if current_user.admin?
-      @band.update(band_params)
-      flash[:success] = "Band updated."
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
       redirect_to band_path(@band)
-    elsif current_user == nil
-      flash[:alert] = "You must be signed in to do that."
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to band_path(@band)
+    elsif @band.update(band_params)
+      flash[:success] = "Band updated."
       redirect_to band_path(@band)
     else
       flash[:alert] = @band.errors.full_messages.join(".  ")
