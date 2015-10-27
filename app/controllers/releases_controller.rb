@@ -65,12 +65,15 @@ class ReleasesController < ApplicationController
   def destroy
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    if current_user && current_user.admin?
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to band_path(@band)
+    elsif current_user.admin?
       @release.destroy
       flash[:success] = "Release deleted."
       redirect_to band_path(@band)
     else
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
       redirect_to band_path(@band)
     end
   end

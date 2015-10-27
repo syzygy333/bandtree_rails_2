@@ -6,6 +6,21 @@ feature "user adds an artist", %{
   So that I can grow the bandtree
 } do
 
+  scenario "guest inputs valid information" do
+    visit new_artist_path
+    artist = FactoryGirl.create(:artist)
+    fill_in "First name", with: artist.first_name
+    fill_in "Last name", with: artist.last_name
+    fill_in "Biography", with: artist.biography
+    fill_in "Official link", with: artist.official_link
+
+    click_button "Add Artist"
+
+    expect(page).to have_content("You must be signed in")
+    expect(page).to have_content("Add an artist")
+    expect(page).to have_content(artist.biography)
+  end
+
   scenario "non-admin inputs valid information" do
     user = FactoryGirl.create(:user)
 
@@ -53,6 +68,8 @@ feature "user adds an artist", %{
     expect(page).to have_content(artist.first_name)
     expect(page).to have_content(artist.last_name)
     expect(page).to have_content(artist.biography)
+    expect(page).to have_content("Edit Artist")
+    expect(page).to have_content("Delete Artist")
   end
 
   scenario "admin inputs invalid information" do
@@ -75,6 +92,7 @@ feature "user adds an artist", %{
 
     expect(page).to have_content("First name can't be blank")
     expect(page).to have_content("Last name can't be blank")
+    expect(page).to have_content("Add an artist")
     expect(page).to have_content(artist.biography)
   end
 end

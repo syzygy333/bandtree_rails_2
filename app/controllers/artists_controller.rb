@@ -51,12 +51,15 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist = Artist.find(params[:id])
-    if current_user && current_user.admin?
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to artist_path(@artist)
+    elsif current_user.admin?
       @artist.destroy
       flash[:success] = "Artist deleted."
       redirect_to artists_path
     else
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
       redirect_to artist_path(@artist)
     end
   end

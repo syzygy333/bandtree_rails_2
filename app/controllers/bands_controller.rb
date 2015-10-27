@@ -50,12 +50,15 @@ class BandsController < ApplicationController
 
   def destroy
     @band = Band.find(params[:id])
-    if current_user
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to band_path(@band)
+    elsif current_user.admin?
       @band.destroy
       flash[:success] = "Band deleted."
       redirect_to bands_path
     else
-      flash[:alert] = "You must be signed in to do that."
+      flash[:alert] = "You must be an admin to do that."
       redirect_to band_path(@band)
     end
   end

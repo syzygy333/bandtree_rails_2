@@ -6,6 +6,27 @@ feature 'user adds a release', %Q{
   So that I can grow the bandtree
 } do
 
+  scenario 'guest inputs valid information' do
+    band = FactoryGirl.create(:band)
+
+    visit band_path(band)
+    click_link "Add Release"
+
+    fill_in "Title", with: Faker::Lorem.sentence(2)
+    fill_in "Track list", with: Faker::Lorem.sentence(2)
+    fill_in "Record label", with: Faker::Lorem.sentence(1)
+    fill_in "Record label url", with: Faker::Internet.url
+    fill_in "Catalog number", with: 50
+    choose("CD")
+    choose("LP")
+
+    click_button "Add Release"
+
+    expect(page).to have_content("You must be signed in")
+    expect(page).to have_content("Add a release")
+    expect(page).to have_content(50)
+  end
+
   scenario 'non-admin inputs valid information' do
     user = FactoryGirl.create(:user)
 
@@ -32,6 +53,7 @@ feature 'user adds a release', %Q{
     click_button "Add Release"
 
     expect(page).to have_content("You must be an admin")
+    expect(page).to have_content("Add a release")
     expect(page).to have_content(50)
   end
 
@@ -62,6 +84,8 @@ feature 'user adds a release', %Q{
 
     expect(page).to have_content("Release added")
     expect(page).to have_content(band.name)
+    expect(page).to have_content("Edit Release")
+    expect(page).to have_content("Delete Release")
     expect(page).to have_content(50)
   end
 
@@ -89,7 +113,8 @@ feature 'user adds a release', %Q{
 
     click_button "Add Release"
 
+    expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Add a release")
-    expect(page).to have_content("Private")
+    expect(page).to have_content("55")
   end
 end

@@ -6,18 +6,45 @@ feature 'user deletes a release', %Q{
   So that I can make the tree better
 } do
 
-  before :each do
+  scenario "guest tries to delete release" do
+    release = FactoryGirl.create(:release)
+
+    visit release_path(release)
+    click_link "Delete Release"
+
+    expect(page).to have_content("You must be an admin")
+    expect(page).to have_content(release.title)
+  end
+
+  scenario "non-admin tries to deletes release" do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
+
+    release = FactoryGirl.create(:release)
+
+    visit release_path(release)
+    click_link "Delete Release"
+
+    expect(page).to have_content("You must be an admin")
+    expect(page).to have_content(release.title)
   end
 
-  scenario 'deletes release information' do
+  scenario "admin deletes release" do
+    user = FactoryGirl.create(:admin)
+
+    visit new_user_session_path
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+
+    click_button "Log in"
+
     release = FactoryGirl.create(:release)
 
     visit release_path(release)
