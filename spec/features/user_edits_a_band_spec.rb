@@ -103,5 +103,5 @@ feature 'user views all bands', %Q{
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Edit Band")
     expect(page).to have_content("Private")
-  end  
+  end
 end

@@ -36,7 +36,7 @@ feature "user links an artist to a release", %{
     artist = FactoryGirl.create(:artist)
 
     visit release_path(release)
-    
+
     within("#link") do
       select(artist.full_name, from: "All artists")
     end

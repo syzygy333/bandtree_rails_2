@@ -118,5 +118,6 @@ feature "user edits an artist", %{
     expect(page).to have_content("First name can't be blank")
     expect(page).to have_content("Portrait")
     expect(page).to_not have_content(bio)
+    expect(page).to_not have_content(link)
   end
 end

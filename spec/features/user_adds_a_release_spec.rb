@@ -6,7 +6,7 @@ feature 'user adds a release', %Q{
   So that I can grow the bandtree
 } do
 
-  scenario 'guest inputs valid information' do
+  scenario "guest inputs valid information" do
     band = FactoryGirl.create(:band)
 
     visit band_path(band)
@@ -27,15 +27,15 @@ feature 'user adds a release', %Q{
     expect(page).to have_content(50)
   end
 
-  scenario 'non-admin inputs valid information' do
+  scenario "non-admin inputs valid information" do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     band = FactoryGirl.create(:band)
 
@@ -57,15 +57,15 @@ feature 'user adds a release', %Q{
     expect(page).to have_content(50)
   end
 
-  scenario 'admin inputs valid information' do
+  scenario "admin inputs valid information" do
     user = FactoryGirl.create(:admin)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     band = FactoryGirl.create(:band)
 
@@ -89,15 +89,15 @@ feature 'user adds a release', %Q{
     expect(page).to have_content(50)
   end
 
-  scenario 'admin inputs invalid information' do
+  scenario "admin inputs invalid information" do
     user = FactoryGirl.create(:admin)
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-    click_button 'Log in'
+    click_button "Log in"
 
     band = FactoryGirl.create(:band)
 
