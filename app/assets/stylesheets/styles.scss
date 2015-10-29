@@ -1,41 +1,8 @@
 $foundation-black: #222222;
 $bandtree-green: #43ac6a;
+$white: #ffffff;
 
-.splash {
-  background-image: image-url(front1);
-  background-size: cover;
-  color: #ffffff;
-  height: 900px;
-  position: relative;
-  text-align: center;
-  text-shadow: 4px 2px 8px $bandtree-green;
-}
-
-.splash a {
-  color: $bandtree-green;
-}
-
-.splash-title {
-  font-size: 18vw;
-  font-weight: 900;
-  margin-top: 75px;
-  text-align: center;
-}
-
-.splash-text {
-  background-color: $foundation-black;
-  color: #ffffff;
-  font-size: 2em;
-  line-height: 40px;
-  margin: -75px -30px 0 -30px;
-  padding: 20px;
-  text-align: center;
-  text-shadow: 4px 2px 8px $foundation-black;
-}
-
-h1,
-h2,
-h3 {
+h1,h2,h3 {
   font-weight: lighter;
 }
 
@@ -45,6 +12,44 @@ h1 a {
 
 h1 a:hover {
   color: $bandtree-green;
+}
+
+.splash {
+  background-image: image-url(front1);
+  background-size: cover;
+  color: $white;
+  height: 900px;
+  position: relative;
+  text-align: center;
+  text-shadow: 4px 2px 8px $foundation-black;
+}
+
+.splash-title {
+  font-size: 18vw;
+  font-weight: 900;
+  margin-top: 75px;
+}
+
+.splash-text {
+  background-color: $foundation-black;
+  font-size: 2em;
+  line-height: 40px;
+  padding: 20px;
+  a {
+    color: $bandtree-green;
+  }
+}
+
+.splash-intro {
+  margin: -75px -30px 0 -30px;
+}
+
+.splash-instructions {
+  margin: 0 -30px 0 0;
+  h1 {
+    font-size: 3em;
+    font-weight: bold;
+  }
 }
 
 .artist-image {
