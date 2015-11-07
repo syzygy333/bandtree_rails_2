@@ -40,20 +40,20 @@ h1 a:hover {
   background-color: $foundation-black;
   font-size: 2em;
   line-height: 40px;
-  margin: 0 -30px 0 -30px;
+  margin: 0 -30px;
   padding: 20px;
 }
 
 .splash-instructions {
   color: $foundation-black;
-  padding: 20px;
   font-size: 6em;
+  padding: 20px;
   text-align: center;
 }
 
 .splash-instructions h1 {
-  font-weight: bold;
   font-size: 1em;
+  font-weight: bold;
 }
 
 .artist-image {
