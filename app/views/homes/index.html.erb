@@ -1,7 +1,36 @@
 <div class="small-12 large-12 columns splash">
-  </br >
-  <p class="splash-title">Bandtree</p>
-  <p class="splash-text">The tree is always growing.</br >
-  The tree has <%= Band.all.count %> <%= link_to "bands", bands_path %>, <%= Release.all.count %> <%= link_to "releases", releases_path %>, and <%= Artist.all.count %> <%= link_to "artists", artists_path %>.</br >
-  Explore and help grow the tree by clicking one of the categories above.</p>
+  <p class="splash-text splash-title">Bandtree</p>
+  <div class="small-12 large-12 columns">
+    <p class="splash-text splash-intro">The tree is always growing. It has <%= Band.all.count %> <%= link_to "bands", bands_path %>, <%= Release.all.count %> <%= link_to "releases", releases_path %>, and <%= Artist.all.count %> <%= link_to "artists", artists_path %>.</br >
+    Explore the tree by clicking one of the categories above.</p>
+  </div>
+</div>
+<div class="small-12 large-12 columns splash-instructions">
+  <h1>How it works</h1>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <h3>1. Add a band.</h3>
+  <%= fa_icon "users" %>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <%= fa_icon "cog spin" %>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <h3>2. Add a release.</h3>
+  <%= fa_icon "music" %>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <h3>3. Add an artist.</h3>
+  <%= fa_icon "user" %>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <h3>4. Link the artist to the release and the band.</h3>
+  <%= fa_icon "retweet" %>
+</div>
+<div class="small-12 large-4 columns splash-instructions">
+  <h3>5. Rock on.</h3>
+  <%= fa_icon "volume-up" %>
+</div>
+<div class="small-12 large-12 columns splash-instructions">
+  <h2>First-hand information is Bandtree's water and sunlight. Accurate, exact details are of the utmost importance, so contributors need to have a physical copy of an album's liner notes to tend to the tree.</h2>
 </div>
