@@ -30,3 +30,5 @@ group :development, :test do
   gem 'pry-rails'
   gem 'coveralls', require: false
 end
+
+gem 'rails_12factor', group: :production
