@@ -15,6 +15,7 @@ gem 'foundation-rails'
 gem "kaminari"
 gem "font-awesome-rails"
 gem "pg_search"
+gem 'devise'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'faker'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
-  gem 'devise'
   gem 'pry-rails'
   gem 'coveralls', require: false
 end
