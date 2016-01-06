@@ -61,6 +61,7 @@ feature 'user adds a band', %Q{
     fill_in "Biography", with: band.biography
     fill_in "Official link", with: band.official_link
     fill_in "Wiki link", with: band.wiki_link
+    attach_file "Band Photo", "#{Rails.root}/spec/support/images/example_photo.jpg"
 
     click_button "Add Band"
 
@@ -68,6 +69,7 @@ feature 'user adds a band', %Q{
     expect(page).to have_content(band.name)
     expect(page).to have_content("Edit Band")
     expect(page).to have_content("Delete Band")
+    expect(band.band_photo.file_name).to eq("example_photo.jpg")
   end
 
   scenario "admin inputs invalid information" do
