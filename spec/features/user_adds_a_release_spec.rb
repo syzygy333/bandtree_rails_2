@@ -117,4 +117,36 @@ feature 'user adds a release', %Q{
     expect(page).to have_content("Add a release")
     expect(page).to have_content("55")
   end
+
+  scenario "admin adds release with photo" do
+    user = FactoryGirl.create(:admin)
+
+    visit new_user_session_path
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+
+    click_button "Log in"
+
+    band = FactoryGirl.create(:band)
+
+    visit band_path(band)
+    click_link "Add Release"
+
+    fill_in "Title", with: Faker::Lorem.sentence(2)
+    fill_in "Track list", with: Faker::Lorem.sentence(2)
+    fill_in "Record label", with: Faker::Lorem.sentence(1)
+    fill_in "Record label url", with: Faker::Internet.url
+    fill_in "Catalog number", with: 50
+    choose("CD")
+    choose("LP")
+    attach_file "Release Art", "#{Rails.root}/spec/support/images/example_photo.jpg"
+
+    click_button "Add Release"
+
+    expect(page).to have_content("Release added")
+    expect(page).to have_content("Edit Release")
+    expect(page).to have_content("Delete Release")
+    expect(Release.first.release_art.file.filename).to eq("example_photo.jpg")
+  end
 end
