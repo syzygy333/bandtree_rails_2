@@ -17,6 +17,7 @@ gem "font-awesome-rails"
 gem "pg_search"
 gem 'devise'
 gem 'fog'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -30,7 +31,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'pry-rails'
   gem 'coveralls', require: false
-  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production
