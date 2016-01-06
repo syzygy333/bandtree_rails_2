@@ -1,7 +1,11 @@
 # encoding: utf-8
 
 class BandPhotoUploader < CarrierWave::Uploader::Base
-  storage :file
+  if Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
 
   def default_url(*args)
     "placeholder-band"
