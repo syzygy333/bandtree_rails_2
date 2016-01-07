@@ -6,8 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'csv'
+bands = [
+  ['Pixies','','http://www.pixiesmusic.com','',nil],
+  ['Tortoise','','http://www.trts.com','',nil],
+  ['They Might Be Giants','','http://www.theymightbegiants.com','http://tmbw.net/wiki/Main_Page',nil],
+  ['A Grape Dope','','','',nil],
+  ['Jim O\'Rourke','','','',nil],
+  ['Red Krayola','','','',nil],
+  ['Bedhead','','','',nil],
+  ['Collections of Colonies of Bees','','http://www.collectionsofcoloniesofbees.net','',nil],
+  ['Russian Circles','','http://www.russiancircles.com','',nil],
+  ['Spinanes','','','',nil],
+  ['Don Caballero','','','',nil],
+  ['Uptighty','','','',nil],
+  ['Paul Duncan','','http://home-tapes.com/Hometapes/Paul_Duncan.html','',nil],
+  ['Archer Prewitt','','','',nil],
+  ['Sam Prekop','','','',nil]
+]
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'releases.csv'))
-csv = CSV.parse(csv_text, :headers => true)
-puts csv_text
+bands.each do |name, biography, official_link, wiki_link, band_photo|
+  Band.create(name: name, biography: biography, official_link: official_link, wiki_link: wiki_link, band_photo: band_photo)
+end
