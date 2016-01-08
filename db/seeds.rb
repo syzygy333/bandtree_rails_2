@@ -6,24 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-bands = [
-  ['Pixies','','http://www.pixiesmusic.com','',nil],
-  ['Tortoise','','http://www.trts.com','',nil],
-  ['They Might Be Giants','','http://www.theymightbegiants.com','http://tmbw.net/wiki/Main_Page',nil],
-  ['A Grape Dope','','','',nil],
-  ['Jim O\'Rourke','','','',nil],
-  ['Red Krayola','','','',nil],
-  ['Bedhead','','','',nil],
-  ['Collections of Colonies of Bees','','http://www.collectionsofcoloniesofbees.net','',nil],
-  ['Russian Circles','','http://www.russiancircles.com','',nil],
-  ['Spinanes','','','',nil],
-  ['Don Caballero','','','',nil],
-  ['Uptighty','','','',nil],
-  ['Paul Duncan','','http://home-tapes.com/Hometapes/Paul_Duncan.html','',nil],
-  ['Archer Prewitt','','','',nil],
-  ['Sam Prekop','','','',nil]
-]
+require 'csv'
 
-bands.each do |name, biography, official_link, wiki_link, band_photo|
-  Band.create(name: name, biography: biography, official_link: official_link, wiki_link: wiki_link, band_photo: band_photo)
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'bands.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+
+puts "There were #{Band.count} bands to begin with"
+
+csv.each do |row|
+  t = Band.new
+  t.name = row['name']
+  t.biography = row['biography']
+  t.official_link = row['official_link']
+  t.wiki_link = row['wiki_link']
+  t.band_photo = row['band_photo']
+  t.save
 end
+
+puts "Now there are #{Band.count} bands"
