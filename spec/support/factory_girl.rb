@@ -19,6 +19,7 @@ FactoryGirl.define do
     biography Faker::Lorem.paragraph(4)
     official_link Faker::Internet.url
     wiki_link Faker::Internet.url
+    band_photo Faker::Avatar.image
   end
 
   factory :release do
