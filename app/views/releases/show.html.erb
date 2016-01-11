@@ -21,7 +21,9 @@
       <strong>Catalog Number:</strong>
         <%= @release.catalog_number %></br>
       <strong>Wiki:</strong>
-        <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></br>
+        <% if @release.wiki_link %>
+          <%= link_to @release.wiki_link.split("https://en.wikipedia.org/wiki/")[1], @release.wiki_link %></br>
+        <% end %>
       <strong>Type:</strong> <%= @release.release_type %></br>
       <strong>Length:</strong> <%= @release.release_length %></br>
     </div>
