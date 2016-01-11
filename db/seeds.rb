@@ -36,7 +36,7 @@ csv.each do |row|
   t.track_list = row['tracks']
   t.year_released = row['year']
   t.record_label = row['label']
-  t.record_label_url = row['label_link']
+  t.record_label_url = "http://#{row['label_link']}"
   t.catalog_number = row['catalog_no']
   t.release_type = row['media']
   t.release_length = row['release_type']
