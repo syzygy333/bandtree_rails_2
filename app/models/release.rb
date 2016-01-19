@@ -12,4 +12,8 @@ class Release < ActiveRecord::Base
   validates :title, presence: true
   validates :track_list, presence: true
   validates :record_label, presence: true
+
+  def various_artists?
+    bands.length > 2 ? true : false
+  end
 end
