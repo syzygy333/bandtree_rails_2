@@ -16,7 +16,7 @@
       <h2><%= @release.title %></h2>
       <% @num = 1 %>
       <% @release.track_list.split("\r\n").each do |track| %>
-        <%= @num %>. <%= track %></br>
+        <%= @num %>. <%= track.html_safe %></br>
         <% @num += 1 %>
       <% end %>
       </br>
