@@ -38,7 +38,7 @@
           <h3 style="margin-bottom: 10px"><%= release.title %>: <%= release.year_released %></h3>
           <% @num = 1 %>
           <% release.track_list.split("\r\n").each do |track| %>
-            <%= "#{@num}. #{track.sub(/\s\(<a\shref="http:\/\/bandtree.herokuapp.com\/bands\/\d+">\w+<\/a>\)/, "")} " %>
+            <%= "#{@num}. #{track.sub(/\s\(<a\shref="http:\/\/bandtree.herokuapp.com\/bands\/\d+">.+<\/a>\)/, "")} " %>
             <% @num += 1 %>
           <% end %>
         </div>
