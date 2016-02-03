@@ -21,7 +21,7 @@ gem 'dotenv-rails'
 
 group :development, :test do
   gem 'spring'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '3.3.3'
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl'
