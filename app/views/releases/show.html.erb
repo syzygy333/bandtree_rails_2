@@ -1,10 +1,6 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <% if @release.various_artists? %>
-      <h1>Various Artists</h1>
-    <% else %>
-      <h1><%= link_to @release.bands[0].name, band_path(@release.bands[0]) %>, <%= link_to @release.bands[1].name, band_path(@release.bands[1]) %></h1>
-    <% end %>
+    <h1><%= link_to @band.name, band_path(@band) %></h1>
 
     <div class="small-12 medium-6 large-6 columns right release-image-show">
       <%= image_tag(@release.release_art) %>
