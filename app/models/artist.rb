@@ -24,9 +24,7 @@ class Artist < ActiveRecord::Base
         end
       end
     end
-    if artist_list.count > 0
-      artist_list.count - 1
-    end
+    artist_list.count - 1
   end
 
   def stage_name_or_full_name
