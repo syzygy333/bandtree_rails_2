@@ -8,21 +8,21 @@
 
 require "csv"
 
-# csv_text = File.read(Rails.root.join("lib", "seeds", "bands.csv"))
-# csv = CSV.parse(csv_text, headers: true)
-#
-# puts "There were #{Band.count} bands to begin with"
-#
-# csv.each do |row|
-#   t = Band.new
-#   t.name = row["name"]
-#   t.biography = row["biography"]
-#   t.official_link = row["official_link"]
-#   t.wiki_link = row["wiki_link"]
-#   t.save
-# end
-#
-# puts "Now there are #{Band.count} bands"
+csv_text = File.read(Rails.root.join("lib", "seeds", "bands.csv"))
+csv = CSV.parse(csv_text, headers: true)
+
+puts "There were #{Band.count} bands to begin with"
+
+csv.each do |row|
+  t = Band.new
+  t.name = row["name"]
+  t.biography = row["biography"]
+  t.official_link = row["official_link"]
+  t.wiki_link = row["wiki_link"]
+  t.save
+end
+
+puts "Now there are #{Band.count} bands"
 
 csv_text = File.read(Rails.root.join("lib", "seeds", "releases.csv"))
 csv = CSV.parse(csv_text, headers: true)
