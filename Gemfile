@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.2.3"
+ruby "2.2.1"
 
 gem 'rails', '4.2.2'
 gem 'pg'
@@ -10,16 +10,17 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise'
 gem "carrierwave"
-gem 'foundation-rails', '< 6.0'
+gem 'foundation-rails'
 gem "kaminari"
 gem "font-awesome-rails"
 gem "pg_search"
+gem 'devise'
 gem 'fog'
 gem 'dotenv-rails'
 
 group :development, :test do
+  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
   gem 'capybara'
@@ -27,13 +28,9 @@ group :development, :test do
   gem 'factory_girl'
   gem 'faker'
   gem 'valid_attribute'
-  gem 'shoulda-matchers', '2.8.0', require: false
+  gem 'shoulda-matchers', require: false
   gem 'pry-rails'
-end
-
-group :test do
   gem 'coveralls', require: false
 end
 
-gem 'web-console', '~> 2.0', group: :development
 gem 'rails_12factor', group: :production
