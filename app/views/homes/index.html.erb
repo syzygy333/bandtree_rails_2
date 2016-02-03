@@ -1,9 +1,7 @@
 <div class="small-12 large-12 columns splash">
   <p class="splash-text splash-title">Bandtree</p>
   <div class="small-12 large-12 columns">
-    <p class="splash-text splash-intro">The tree is always growing. It has <%= @bands %> <%= link_to "bands", bands_path %>, <%= @releases %> <%= link_to "releases", releases_path %>, and <%= @artists %> <%= link_to "artists", artists_path %>.<br />
-    The most recent additions are <%= link_to @most_recent_band.name, band_path(@most_recent_band.id) %>, <%= link_to @most_recent_release.title, release_path(@most_recent_release.id) %>, and <%= link_to @most_recent_artist.full_name, artist_path(@most_recent_artist.id) %>.<br />
-    Click above to begin exploring the tree!</p>
+    
   </div>
 </div>
 <div class="small-12 large-12 columns splash-instructions">
