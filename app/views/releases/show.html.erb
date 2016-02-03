@@ -1,6 +1,12 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1><%= link_to @band.name, band_path(@band) %></h1>
+    <% if @bands.count > 2 %>
+      <h1>Various Artists</h1>
+    <% elsif @bands.count == 1 %>
+      <h1><%= link_to @bands[0].name, band_path(@bands[0]) %></h1>
+    <% else %>
+      <h1><%= link_to @bands[0].name, band_path(@bands[0]) %>, <%= link_to @bands[1].name, band_path(@bands[1]) %></h1>
+    <% end %>
 
     <div class="small-12 medium-6 large-6 columns right release-image-show">
       <%= image_tag(@release.release_art) %>
@@ -10,7 +16,7 @@
       <h2><%= @release.title %></h2>
       <% @num = 1 %>
       <% @release.track_list.split("\r\n").each do |track| %>
-        <%= @num %>. <%= track %></br>
+        <%= @num %>. <%= track.html_safe %></br>
         <% @num += 1 %>
       <% end %>
       </br>
@@ -58,7 +64,7 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1>Performing Artists (<%= @artists.size %>)</h1>
+    <h1><%= @artists.size %> artists involved</h1>
   </div>
 </div>
 

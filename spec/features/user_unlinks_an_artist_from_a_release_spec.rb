@@ -19,7 +19,7 @@ feature "user links an artist to a release", %{
     click_button "Unlink artist"
 
     expect(page).to have_content("You must be an admin")
-    expect(page).to have_content("Performing Artists")
+    expect(page).to have_content("artists involved")
     expect(page).to have_link("#{artist.full_name}")
   end
 
@@ -45,7 +45,7 @@ feature "user links an artist to a release", %{
     click_button "Unlink artist"
 
     expect(page).to have_content("You must be an admin")
-    expect(page).to have_content("Performing Artists")
+    expect(page).to have_content("artists involved")
     expect(page).to have_link("#{artist.full_name}")
   end
 
@@ -71,7 +71,7 @@ feature "user links an artist to a release", %{
     click_button "Unlink artist"
 
     expect(page).to have_content("Release updated")
-    expect(page).to have_content("Performing Artists")
+    expect(page).to have_content("artists involved")
     expect(page).to_not have_link("#{artist.full_name}")
   end
 end

@@ -31,6 +31,7 @@ class ReleasesController < ApplicationController
   def show
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
+    @bands = @release.bands
     @artists = @release.artists.order(:last_name)
   end
 
