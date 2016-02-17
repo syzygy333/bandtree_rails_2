@@ -10,7 +10,7 @@
             <div>
               <h3><%= letter.upcase %></h3>
             </div>
-        <% @releases.each do |release| %>
+        <% @display_releases.each do |release| %>
           <% if release.title[0].downcase == letter %>
             <li><%= link_to release.title, release_path(release) %></li>
           <% end %>
@@ -24,7 +24,7 @@
             <div>
               <h3><%= letter.upcase %></h3>
             </div>
-        <% @releases.each do |release| %>
+        <% @display_releases.each do |release| %>
           <% if release.title[0].downcase == letter %>
             <li><%= link_to release.title, release_path(release) %></li>
           <% end %>
@@ -38,7 +38,7 @@
             <div>
               <h3><%= letter.upcase %></h3>
             </div>
-        <% @releases.each do |release| %>
+        <% @display_releases.each do |release| %>
           <% if release.title[0].downcase == letter %>
             <li><%= link_to release.title, release_path(release) %></li>
           <% end %>
@@ -52,7 +52,7 @@
             <div>
               <h3><%= letter.upcase %></h3>
             </div>
-        <% @releases.each do |release| %>
+        <% @display_releases.each do |release| %>
           <% if release.title[0].downcase == letter %>
             <li><%= link_to release.title, release_path(release) %></li>
           <% end %>

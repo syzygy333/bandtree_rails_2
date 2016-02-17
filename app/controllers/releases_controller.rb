@@ -2,6 +2,13 @@ class ReleasesController < ApplicationController
   def index
     @releases = Release.order(:title).page params[:page]
     @index_headers = ("a".."z").to_a + ("0".."9").to_a
+    @display_releases = []
+    @releases.each do |release|
+      if release.title.start_with?("The ")
+        release.title = release.title[4..-1].concat(", The")
+        @display_releases << release
+      end
+    end
   end
 
   def new
