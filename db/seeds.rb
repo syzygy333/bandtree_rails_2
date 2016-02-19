@@ -61,7 +61,11 @@ csv.each do |row|
   artist = row["artist"].to_s.split(" ")
   if Release.where(title: album)[0] != nil && artist.count == 2
     release = Release.where(title: album)[0]
-    artist = Artist.where(first_name: artist[0], last_name: artist[1])[0]
-    release.artists << artist
+    connected_artist = Artist.where(first_name: artist[0], last_name: artist[1])[0]
+    release.artists << connected_artist
+    if release.bands.count == 1
+      band = release.bands[0]
+      connected_artist.bands << band
+    end
   end
 end

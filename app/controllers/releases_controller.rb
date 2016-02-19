@@ -7,6 +7,11 @@ class ReleasesController < ApplicationController
       if release.title.start_with?("The ")
         release.title = release.title[4..-1].concat(", The")
         @display_releases << release
+      else
+        @display_releases << release
+      end
+      @display_releases.sort_by! do |item|
+        item[:title]
       end
     end
   end
