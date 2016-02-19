@@ -36,22 +36,35 @@ require "csv"
 #
 # puts "Now there are #{Release.count} releases"
 
+# csv_text = File.read(Rails.root.join("lib", "seeds", "albumsartists.csv"))
+# csv = CSV.parse(csv_text, headers: true)
+#
+# puts "There were #{Artist.count} artists to begin with"
+#
+# csv.each do |row|
+#   t = Artist.new
+#   split_name = row["artist"].to_s.split(" ")
+#   if split_name.count == 2
+#     if Artist.where(first_name: "#{split_name.first}", last_name: "#{split_name.last}")[0] != nil
+#     else
+#       t.first_name = split_name.first
+#       t.last_name = split_name.last
+#     end
+#   end
+#   t.save
+# end
+#
+# puts "There are now #{Artist.count} artists"
+
 csv_text = File.read(Rails.root.join("lib", "seeds", "albumsartists.csv"))
 csv = CSV.parse(csv_text, headers: true)
 
-puts "There were #{Artist.count} artists to begin with"
-
 csv.each do |row|
-  t = Artist.new
-  split_name = row["artist"].to_s.split(" ")
-  if split_name.count == 2
-    if Artist.where(first_name: "#{split_name.first}", last_name: "#{split_name.last}")[0] != nil
-    else
-      t.first_name = split_name.first
-      t.last_name = split_name.last
-    end
+  album = row["album"].to_s
+  artist = row["artist"].to_s.split(" ")
+  if Release.where(title: album)[0] != nil && artist.count == 2
+    release = Release.where(title: album)[0]
+    artist = Artist.where(first_name: artist[0], last_name: artist[1])[0]
+    release.artists << artist
   end
-  t.save
 end
-
-puts "There are now #{Artist.count} artists"
