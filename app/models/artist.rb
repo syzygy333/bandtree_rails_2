@@ -30,7 +30,7 @@ class Artist < ActiveRecord::Base
   end
 
   def stage_name_or_full_name
-    if stage_name_preferred?
+    if stage_name_preferred == true
       stage_name
     else
       full_name
