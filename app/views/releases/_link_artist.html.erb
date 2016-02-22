@@ -1,7 +1,7 @@
 <%= form_for @release do |f| %>
   <div class="field" id="link">
     <%= f.label :artists, "All artists" %>
-    <%= f.collection_select :artists, Artist.all.order(:first_name), :id, :full_name, prompt: true %>
+    <%= f.collection_select :artists, Artist.all.order(:first_name), :id, :stage_name_or_full_name, prompt: true %>
     <%= f.submit "Link artist", class: "tiny button" %>
   </div>
 <% end %>
