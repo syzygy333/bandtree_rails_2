@@ -3,7 +3,7 @@
   <div class="small-12 large-12 columns">
     <p class="splash-text splash-intro">The tree is always growing. It has <%= @total_bands %> <%= link_to "bands", bands_path %>, <%= @total_releases %> <%= link_to "releases", releases_path %>, and <%= @total_artists %> <%= link_to "artists", artists_path %>.<br />
     <% if @newest_band && @newest_release && @newest_artist %>
-      The newest additions are <%= link_to @newest_band.name, band_path(@newest_band) %>, <%= link_to @newest_release.title, release_path(@newest_release) %>, and <%= link_to @newest_artist.full_name, artist_path(@newest_artist) %>.<br />
+      The newest additions are <%= link_to @newest_band.name, band_path(@newest_band) %>, <%= link_to @newest_release.title, release_path(@newest_release) %>, and <%= link_to @newest_artist.full_name, artist_path(@newest_artist) %>. The artist with the most connections is <%= link_to @most_connected.full_name, artist_path(@most_connected.id) %>.<br />
     <% end %>
     Click above to begin exploring the tree!</p></p>
   </div>

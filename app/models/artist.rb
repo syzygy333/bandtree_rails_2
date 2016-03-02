@@ -15,6 +15,14 @@ class Artist < ActiveRecord::Base
     "#{first_name} #{middle_name} #{last_name}"
   end
 
+  def stage_name_or_full_name
+    if stage_name_preferred == true
+      stage_name
+    else
+      full_name
+    end
+  end
+
   def connectedness
     artist_list = []
     releases.each do |release|
@@ -29,11 +37,4 @@ class Artist < ActiveRecord::Base
     end
   end
 
-  def stage_name_or_full_name
-    if stage_name_preferred == true
-      stage_name
-    else
-      full_name
-    end
-  end
 end
