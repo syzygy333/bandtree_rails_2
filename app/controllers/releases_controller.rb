@@ -50,8 +50,6 @@ class ReleasesController < ApplicationController
       if match.name == @release.title
         @spotify = match.external_urls["spotify"]
         break
-      else
-        nil
       end
     end
   end
