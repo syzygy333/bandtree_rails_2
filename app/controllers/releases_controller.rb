@@ -45,11 +45,15 @@ class ReleasesController < ApplicationController
     @band = Band.find(@release.bands.last.id)
     @bands = @release.bands
     @artists = @release.artists.order(:last_name)
-    matches = RSpotify::Album.search(@release.title)
-    matches.each do |match|
-      if match.name == @release.title
-        @spotify = match.external_urls["spotify"]
-        break
+    spotify_band = RSpotify::Artist.search(@band.name).first
+    if spotify_band != nil
+      if spotify_band.name.casecmp(@band.name) == 0
+        spotify_band.albums.each do |match|
+          if match.name.casecmp(@release.title) == 0
+            @spotify = match.external_urls["spotify"]
+            break
+          end
+        end
       end
     end
   end
