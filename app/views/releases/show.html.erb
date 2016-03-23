@@ -13,17 +13,15 @@
     </div>
 
     <div class="small-12 medium-6 large-6 columns panel left release-panel">
-      <h2><%= @release.title %></h2>
+      <h2><%= @release.title %>
+      <% if @spotify %>
+        <%= link_to @spotify, class: "spotify", target: "_blank" do%>
+          <%= fa_icon "spotify" %>
+        <% end %>
+      <% end %>
+      </h2>
       <% @num = 1 %>
       <% @release.track_list.split("\r\n").each do |track| %>
-        <% track_matches = RSpotify::Track.search(track) %>
-        <% track_matches.each do |match| %>
-          <% if match.artists[0].name == @band.name && match.album.name == @release.title %>
-            <%= @num %>. <%= track.html_safe %> <%= link_to match.external_urls["spotify"], target: "_blank" do %>
-              <%= fa_icon "spotify" %>
-            <% end %></br>
-          <% end %>
-        <% end %>
         <%= @num %>. <%= track.html_safe %></br>
         <% @num += 1 %>
       <% end %>
