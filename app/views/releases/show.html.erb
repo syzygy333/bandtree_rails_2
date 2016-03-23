@@ -13,7 +13,13 @@
     </div>
 
     <div class="small-12 medium-6 large-6 columns panel left release-panel">
-      <h2><%= @release.title %></h2>
+      <h2><%= @release.title %>
+      <% if @spotify %>
+        <%= link_to @spotify, class: "spotify", target: "_blank" do%>
+          <%= fa_icon "spotify" %>
+        <% end %>
+      <% end %>
+      </h2>
       <% @num = 1 %>
       <% @release.track_list.split("\r\n").each do |track| %>
         <%= @num %>. <%= track.html_safe %></br>
