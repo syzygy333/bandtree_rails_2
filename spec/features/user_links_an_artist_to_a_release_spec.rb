@@ -12,12 +12,7 @@ feature "user links an artist to a release", %{
 
     visit release_path(release)
 
-    within("#link") do
-      select(artist.full_name, from: "All artists")
-    end
-    click_button "Link artist"
-
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Link Artist")
     expect(page).to have_content("artists involved")
     expect(page).to_not have_link("#{artist.full_name}")
   end
@@ -37,12 +32,7 @@ feature "user links an artist to a release", %{
 
     visit release_path(release)
 
-    within("#link") do
-      select(artist.full_name, from: "All artists")
-    end
-    click_button "Link artist"
-
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Link Artist")
     expect(page).to have_content("artists involved")
     expect(page).to_not have_link("#{artist.full_name}")
   end
@@ -64,7 +54,7 @@ feature "user links an artist to a release", %{
     within("#link") do
       select(artist.full_name, from: "All artists")
     end
-    click_button "Link artist"
+    click_button "Link Artist"
 
     expect(page).to have_content("Release updated")
     expect(page).to have_content("artists involved")

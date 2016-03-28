@@ -10,9 +10,8 @@ feature "user deletes an artist", %{
     artist = FactoryGirl.create(:artist)
 
     visit artist_path(artist)
-    click_link "Delete Artist"
 
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Delete Artist")
     expect(page).to have_content(artist.first_name)
     expect(page).to have_content(artist.last_name)
     expect(page).to have_content(artist.biography)
@@ -31,9 +30,8 @@ feature "user deletes an artist", %{
     artist = FactoryGirl.create(:artist)
 
     visit artist_path(artist)
-    click_link "Delete Artist"
 
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Delete Artist")
     expect(page).to have_content(artist.first_name)
     expect(page).to have_content(artist.last_name)
     expect(page).to have_content(artist.biography)

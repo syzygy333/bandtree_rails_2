@@ -12,21 +12,11 @@ feature "user edits an artist", %{
     bio = artist.biography
 
     visit artist_path(artist)
-    click_link "Edit Artist"
 
-    fill_in "Biography", with: Faker::Lorem.sentence(2)
-    fill_in "Stage name", with: Faker::Name.first_name
-    fill_in "Official link", with: Faker::Internet.url
-    fill_in "Wiki link", with: Faker::Internet.url
-
-    click_button "Accept"
-
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Edit Artist")
     expect(page).to have_content(artist.full_name)
     expect(page).to have_content(link)
     expect(page).to have_content(bio)
-    expect(page).to have_content("Edit Artist")
-    expect(page).to have_content("Delete Artist")
   end
 
   scenario "non-admin edits artist" do
@@ -44,21 +34,11 @@ feature "user edits an artist", %{
     bio = artist.biography
 
     visit artist_path(artist)
-    click_link "Edit Artist"
 
-    fill_in "Biography", with: Faker::Lorem.sentence(2)
-    fill_in "Stage name", with: Faker::Name.first_name
-    fill_in "Official link", with: Faker::Internet.url
-    fill_in "Wiki link", with: Faker::Internet.url
-
-    click_button "Accept"
-
-    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("Edit Artist")
     expect(page).to have_content(artist.full_name)
     expect(page).to have_content(link)
     expect(page).to have_content(bio)
-    expect(page).to have_content("Edit Artist")
-    expect(page).to have_content("Delete Artist")
   end
 
   scenario "admin edits artist with valid information" do

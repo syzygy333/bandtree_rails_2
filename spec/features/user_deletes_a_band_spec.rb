@@ -11,10 +11,8 @@ feature 'user deletes a band', %Q{
     visit band_path(band.id)
     expect(page).to have_content(band.name)
 
-    click_link "Delete Band"
-
+    expect(page).not_to have_content("Delete Band")
     expect(page).to have_content(band.name)
-    expect(page).to have_content("You must be an admin")
   end
 
   scenario "non-admin tries to delete band" do
@@ -31,10 +29,8 @@ feature 'user deletes a band', %Q{
     visit band_path(band.id)
     expect(page).to have_content(band.name)
 
-    click_link "Delete Band"
-
+    expect(page).not_to have_content("Delete Band")
     expect(page).to have_content(band.name)
-    expect(page).to have_content("You must be an admin")
   end
 
   scenario "admin deletes band" do
