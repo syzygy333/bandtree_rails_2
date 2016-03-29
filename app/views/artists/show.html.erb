@@ -67,7 +67,17 @@
       <%= link_to release_path(release) do %>
         <p class="release-image"><%= image_tag(release.release_art) %></p>
         <div class="panel">
-          <h3><%= release.title %>: <%= release.year_released %></h3>
+          <h3><%= release.title %>
+          <% if release.bands.count == 0 %>
+            :
+          <% elsif release.bands.count == 1 %>
+             by <%= release.bands.first.name %>:
+          <% elsif release.bands.count == 2 %>
+            <%= release.bands.first.name %> &amp; <%= release.bands.last.name %>:
+          <% else %>
+            Various Artists:
+          <% end %>
+          <%= release.year_released %></h3>
         </div>
       <% end %>
     </div>
