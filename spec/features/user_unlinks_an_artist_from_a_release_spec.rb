@@ -60,7 +60,7 @@ feature "user links an artist to a release", %{
     end
     click_button "Unlink Artist"
 
-    expect(page).to have_content("Release updated")
+    expect(page).to have_content("Artist unlinked")
     expect(page).to have_content("artists involved")
     expect(page).to_not have_link("#{artist.full_name}")
   end
