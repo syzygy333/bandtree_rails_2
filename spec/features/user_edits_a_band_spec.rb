@@ -10,18 +10,17 @@ feature 'user views all bands', %Q{
     band = FactoryGirl.create(:band)
     visit band_path(band.id)
 
-    click_link "Edit Band"
+    expect(page).not_to have_content("Edit Band")
+    expect(page).to have_content(band.name)
 
-    expect(page).to have_content("Edit Band")
-    expect(page).to have_content("Private")
+    visit edit_band_path(band)
 
     fill_in "Name", with: "The Sea and Cake"
 
     click_button "Accept"
 
     expect(page).to have_content("You must be an admin")
-    expect(page).to have_content(band.name)
-    expect(page).to_not have_content("The Sea and Cake")
+    expect(page).not_to have_content("The Sea and Cake")
   end
 
   scenario "non-admin tries to edit band" do
@@ -37,18 +36,17 @@ feature 'user views all bands', %Q{
     band = FactoryGirl.create(:band)
     visit band_path(band.id)
 
-    click_link "Edit Band"
+    expect(page).not_to have_content("Edit Band")
+    expect(page).to have_content(band.name)
 
-    expect(page).to have_content("Edit Band")
-    expect(page).to have_content("Private")
+    visit edit_band_path(band)
 
     fill_in "Name", with: "The Sea and Cake"
 
     click_button "Accept"
 
     expect(page).to have_content("You must be an admin")
-    expect(page).to have_content(band.name)
-    expect(page).to_not have_content("The Sea and Cake")
+    expect(page).not_to have_content("The Sea and Cake")
   end
 
   scenario "admin edits band with valid information" do

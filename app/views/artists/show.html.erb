@@ -7,12 +7,14 @@
       <p><strong>Official Website:</strong> <%= link_to @artist.official_link, @artist.official_link %></p>
       <p><strong>Wiki:</strong> <%= link_to @artist.wiki_link, @artist.wiki_link %></p>
     </div>
+    <% if current_user != nil && current_user.admin? %>
     <div class="small-12 large-12 columns">
       <%= link_to "Delete Artist", artist_path(@artist), method: :delete,
         class: "tiny button alert right right-button" %>
       <%= link_to "Edit Artist", edit_artist_path,
         class: "tiny button left left-button" %>
     </div>
+    <% end %>
   </div>
 </div>
 
@@ -26,7 +28,11 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1><%= @bands.size %> bands</h1>
+    <% if @bands.size == 1 %>
+      <h1><%= @bands.size %> band</h1>
+    <% else %>
+      <h1><%= @bands.size %> bands</h1>
+    <% end %>
   </div>
 </div>
 
@@ -47,7 +53,11 @@
 
 <div class="row">
   <div class="small-12 large-12 columns">
-    <h1><%= @releases.size %> releases</h1>
+    <% if @releases.size == 1 %>
+      <h1><%= @releases.size %> release</h1>
+    <% else %>
+      <h1><%= @releases.size %> releases</h1>
+    <% end %>
   </div>
 </div>
 
@@ -57,7 +67,17 @@
       <%= link_to release_path(release) do %>
         <p class="release-image"><%= image_tag(release.release_art) %></p>
         <div class="panel">
-          <h3><%= release.title %>: <%= release.year_released %></h3>
+          <h3><%= release.title %>
+          <% if release.bands.count == 0 %>
+            :
+          <% elsif release.bands.count == 1 %>
+             by <%= release.bands.first.name %>:
+          <% elsif release.bands.count == 2 %>
+            <%= release.bands.first.name %> &amp; <%= release.bands.last.name %>:
+          <% else %>
+            Various Artists:
+          <% end %>
+          <%= release.year_released %></h3>
         </div>
       <% end %>
     </div>

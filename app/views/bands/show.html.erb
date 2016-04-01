@@ -10,6 +10,7 @@
       <p><strong>Wiki:</strong> <%= link_to @band.wiki_link, @band.wiki_link %></p>
     </div>
 
+    <% if current_user != nil && current_user.admin? %>
     <div class="small-12 large-12 columns">
       <%= link_to "Delete Band", band_path(@band), method: :delete,
         class: "tiny button alert right right-button" %>
@@ -18,6 +19,7 @@
       <%= link_to "Add Release", new_band_release_path(@band),
         class: "tiny button success left middle-button" %>
     </div>
+    <% end %>
   </div>
 </div>
 

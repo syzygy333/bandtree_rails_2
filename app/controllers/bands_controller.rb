@@ -9,10 +9,7 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
-    if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
-      render :new
-    elsif !current_user.admin?
+    if current_user == nil || !current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       render :new
     elsif @band.save
@@ -35,10 +32,7 @@ class BandsController < ApplicationController
 
   def update
     @band = Band.find(params[:id])
-    if current_user == nil
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to band_path(@band)
-    elsif !current_user.admin?
+    if current_user == nil || !current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       redirect_to band_path(@band)
     elsif @band.update(band_params)
