@@ -60,18 +60,21 @@ class ReleasesController < ApplicationController
   def update
     @release = Release.find(params[:id])
     @band = Band.find(@release.bands.last.id)
-    if @release.update(release_params)
+    if current_user == nil
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to release_path(@release)
+    elsif !current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to release_path(@release)
+    elsif @release.update(release_params)
       if params[:release][:artists] && (@release.artists.include?(Artist.find(params[:release][:artists])))
         @release.artists.delete(Artist.find(params[:release][:artists]))
         @band.artists.delete(Artist.find(params[:release][:artists]))
-        flash[:alert] = "Artist unlinked"
       elsif params[:release][:artists]
         @release.artists << Artist.find(params[:release][:artists])
         @band.artists << Artist.find(params[:release][:artists])
-        flash[:success] = "Artist linked"
-      else
-        flash[:success] = "Release updated."
       end
+      flash[:success] = "Release updated."
       redirect_to release_path(@release)
     else
       flash[:alert] = @release.errors.full_messages.join(".  ")

@@ -9,10 +9,7 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
-    if current_user == nil
-      flash[:alert] = "You must be signed in to do that."
-      render :new
-    elsif !current_user.admin?
+    if current_user == nil || !current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       render :new
     elsif @artist.save
@@ -36,10 +33,7 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    if current_user == nil
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to artist_path(@artist)
-    elsif !current_user.admin?
+    if current_user == nil || !current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       redirect_to artist_path(@artist)
     elsif @artist.update(artist_params)

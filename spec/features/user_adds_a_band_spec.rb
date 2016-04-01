@@ -16,7 +16,7 @@ feature 'user adds a band', %Q{
 
     click_button "Add Band"
 
-    expect(page).to have_content("You must be signed in")
+    expect(page).to have_content("You must be an admin")
     expect(page).to have_content("Add a band")
     expect(page).to have_content(band.biography)
   end

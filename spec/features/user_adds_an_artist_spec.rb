@@ -16,7 +16,7 @@ feature "user adds an artist", %{
 
     click_button "Add Artist"
 
-    expect(page).to have_content("You must be signed in")
+    expect(page).to have_content("You must be an admin")
     expect(page).to have_content("Add an artist")
     expect(page).to have_content(artist.biography)
   end

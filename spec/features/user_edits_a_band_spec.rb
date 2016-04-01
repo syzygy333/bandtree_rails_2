@@ -12,6 +12,15 @@ feature 'user views all bands', %Q{
 
     expect(page).not_to have_content("Edit Band")
     expect(page).to have_content(band.name)
+
+    visit edit_band_path(band)
+
+    fill_in "Name", with: "The Sea and Cake"
+
+    click_button "Accept"
+
+    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("The Sea and Cake")
   end
 
   scenario "non-admin tries to edit band" do
@@ -29,6 +38,15 @@ feature 'user views all bands', %Q{
 
     expect(page).not_to have_content("Edit Band")
     expect(page).to have_content(band.name)
+
+    visit edit_band_path(band)
+
+    fill_in "Name", with: "The Sea and Cake"
+
+    click_button "Accept"
+
+    expect(page).to have_content("You must be an admin")
+    expect(page).not_to have_content("The Sea and Cake")
   end
 
   scenario "admin edits band with valid information" do
